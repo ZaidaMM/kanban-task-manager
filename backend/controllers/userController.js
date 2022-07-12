@@ -1,3 +1,5 @@
+const asyncHandler = require('express-async-handler');
+
 // desc:   Register New User
 // route:  /api/users
 // access: Public
