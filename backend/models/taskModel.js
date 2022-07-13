@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const taskSchema = mongoose.Schema(
   {
     title: {
-      type: mongoose.Schema.Types.ObjectId,
+      // type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: [true, 'Please add a title'],
     },
     description: {
