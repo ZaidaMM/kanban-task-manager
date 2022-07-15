@@ -1,12 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Board from './views/Board';
+import NewBoard from './views/NewBoard';
+import NewTask from './views/NewTask';
+import Task from './views/Task';
+
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1 className='text-3xl text-blue-300 font-bold'>
-          Kanban Task Manager
-        </h1>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Board />} />
+          <Route path='/new-board' element={<NewBoard />} />
+          <Route path='/new-task' element={<NewTask />} />
+          <Route path='/task/:taskId' element={<Task />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
