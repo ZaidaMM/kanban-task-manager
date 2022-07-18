@@ -10,9 +10,9 @@ const Navbar = () => {
         <div className='nav-buttons flex items-center '>
           <Button
             children='+ Add New Task'
-            onClick={() => console.log('clicked')}
+            onClick={() => console.log('button clicked')}
           />
-          <Ellipsis />
+          <Ellipsis onClick={() => console.log('ellipsisBtn clicked')} />
         </div>
       </div>
     </Wrapper>
