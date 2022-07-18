@@ -3,14 +3,14 @@ import Sidebar from '../components/Sidebar';
 
 const Board = () => {
   return (
-    <main className='flex'>
+    <div className='flex justify-between'>
       <Sidebar />
-      <div className='flex-col'>
+      <div>
         <Navbar />
 
-        <h4>LandingPage</h4>
+        <h4 className='mt-6'>LandingPage</h4>
       </div>
-    </main>
+    </div>
   );
 };
 export default Board;
