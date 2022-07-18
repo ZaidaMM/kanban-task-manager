@@ -5,9 +5,9 @@ import Ellipsis from './Ellipsis';
 const Navbar = () => {
   return (
     <Wrapper>
-      <div className='nav-center py-7 border-solid border-b-2 border-grey-200'>
+      <div className='nav-center'>
         <h1 className='nav-title '>Platform Launch</h1>
-        <div className='nav-buttons flex items-center '>
+        <div className='nav-buttons '>
           <Button
             children='+ Add New Task'
             onClick={() => console.log('button clicked')}

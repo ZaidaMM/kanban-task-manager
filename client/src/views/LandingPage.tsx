@@ -1,16 +1,22 @@
+// import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
+import Wrapper from '../assets/wrappers/Landing';
 
 const LandingPage = () => {
   return (
-    <div className='flex justify w-full'>
-      <Sidebar />
-      <div>
-        <Navbar />
-
-        <h4 className='mt-6'>BOARD</h4>
-      </div>
-    </div>
+    <Wrapper>
+      <main className='dashboard'>
+        <Sidebar />
+        <div>
+          <Navbar />
+          <div className='dashboard-page'>
+            {/* <Outlet /> */}
+            <h4>BOARD</h4>
+          </div>
+        </div>
+      </main>
+    </Wrapper>
   );
 };
 export default LandingPage;
