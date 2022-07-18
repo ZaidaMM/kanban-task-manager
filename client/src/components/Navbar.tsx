@@ -1,6 +1,6 @@
 import Wrapper from '../assets/wrappers/Navbar';
-import { ReactComponent as Ellipsis } from '../assets/images/icon-vertical-ellipsis.svg';
 import Button from './Button';
+import Ellipsis from './Ellipsis';
 
 const Navbar = () => {
   return (
@@ -12,7 +12,7 @@ const Navbar = () => {
             children='+ Add New Task'
             onClick={() => console.log('clicked')}
           />
-          <Ellipsis className='mx-6 cursor-pointer' />
+          <Ellipsis />
         </div>
       </div>
     </Wrapper>
