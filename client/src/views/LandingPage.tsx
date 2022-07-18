@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar';
 
 const LandingPage = () => {
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify w-full'>
       <Sidebar />
       <div>
         <Navbar />
