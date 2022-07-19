@@ -55,12 +55,19 @@ const Wrapper = styled.aside`
     /* .nav-link.active {
       background: var(--primary-200);
       color: var(--white);
+    }
+    .nav-link.active .icon {
+      filter: saturate(0%) brightness(0%) invert(100%) opacity(1);
     } */
     .nav-link:hover {
       background: var(--primary-50);
       color: var(--primary-200);
     }
-    .nav-link .icon {
+    .nav-link:hover .icon {
+      filter: invert(39%) sepia(80%) saturate(854%) hue-rotate(213deg)
+        brightness(83%) contrast(86%);
+    }
+    .nav-link .icon svg {
       height: 16px;
       width: 16px;
       margin-right: 16px;
@@ -68,6 +75,10 @@ const Wrapper = styled.aside`
     .nav-link.create-board {
       color: var(--primary-200);
       cursor: pointer;
+    }
+    .nav-link.create-board .icon {
+      filter: invert(39%) sepia(80%) saturate(854%) hue-rotate(213deg)
+        brightness(83%) contrast(86%);
     }
   }
 `;
