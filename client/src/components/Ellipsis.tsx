@@ -7,7 +7,7 @@ interface Props {
 const EllipsisBtn = ({ onClick }: Props) => {
   return (
     <>
-      <Ellipsis onClick={onClick} className='mx-6 cursor-pointer' />
+      <Ellipsis onClick={onClick} className='ellipsis' />
     </>
   );
 };

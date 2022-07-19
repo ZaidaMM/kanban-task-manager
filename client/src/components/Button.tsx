@@ -6,10 +6,7 @@ interface Props {
 const Button = ({ children, onClick }: Props) => {
   return (
     <>
-      <button
-        onClick={onClick}
-        className=' block bg-purple-100 hover:opacity-25  opacity-30 text-white px-6 py-3.5  rounded-3xl'
-      >
+      <button onClick={onClick} className='btn'>
         {children}
       </button>
     </>

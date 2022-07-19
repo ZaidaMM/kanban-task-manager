@@ -1,11 +1,115 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap');
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-@tailwind base;
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-@layer base {
-  h1 {
-    @apply text-2xl font-bold;
+:root {
+  /* Colors */
+  /* Purple */
+  --primary-50: rgba(168, 164, 255, 25%);
+  --primary-100: #a8a4ff;
+  --primary-200: #635fc7;
+  /* Grey */
+  --grey-100: #f4f7fd;
+  --grey-200: #e4ebfa;
+  --grey-300: #828fa3;
+  --grey-400: #3e3f4e;
+  --grey-500: #2b2c37;
+  --grey-600: #20212c;
+  --grey-700: #000112;
+  /* Red */
+  --red-light: #ff9898;
+  --red-dark: #ea5555;
+  /* Rest of the colors */
+  --black: #222;
+  --white: #fff;
+
+  /* fonts */
+  --bodyFont: 'Plus Jakarta Sans', sans-serif;
+
+  /* Rest of vars */
+  --borderRadius: 24px;
+  --transition: 0.3s ease-in-out all;
+  --letterSpacing: 1px;
+  --border: solid 2px var(--grey-200);
+}
+
+body {
+  font-family: var(--bodyFont);
+}
+
+h1 {
+  font-size: 24px;
+}
+
+a {
+  text-decoration: none;
+  letter-spacing: var(--letterSpacing);
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 25%;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  background: var(--primary-200);
+  border: transparent;
+  color: var(--white);
+  border-radius: var(--borderRadius);
+  padding: 15px 25px;
+  font-size: 15px;
+}
+.btn:hover {
+  background: var(--primary-100);
+}
+.btn-danger {
+  background: var(--red-dark);
+  color: var(--white);
+}
+.btn-danger:hover {
+  background: var(--red-light);
+  color: var(--white);
+}
+.btn-disabled {
+  cursor: not-allowed;
+  background-color: var(--primary-100);
+  opacity: 25%;
+}
+.btn-block {
+  width: 100%;
+}
+.ellipsis {
+  cursor: pointer;
+  margin-left: 24px;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
   }
 }
-@tailwind components;
-@tailwind utilities;
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  border: 5px solid var(--grey-400);
+  border-radius: 50%;
+  border-top-color: var(--primary-500);
+  animation: spinner 2s linear infinite;
+}
+.loading-center {
+  margin: 0 auto;
+}
