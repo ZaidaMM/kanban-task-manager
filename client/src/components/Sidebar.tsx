@@ -33,9 +33,9 @@ const Sidebar = () => {
         </div>
         <div className='toggle-container'>
           <ModeToggler />
+          <SidebarToggler />
         </div>
       </div>
-      <SidebarToggler />
     </Wrapper>
   );
 };

@@ -1,4 +1,4 @@
-import { TOGGLE_SIDEBAR } from './actions';
+import { TOGGLE_SIDEBAR, TOGGLE_THEME } from './actions';
 import { initialState } from './appContext';
 
 const reducer = (state, action) => {
@@ -7,6 +7,13 @@ const reducer = (state, action) => {
       ...state,
       showSidebar: !state.showSidebar,
       showSidebarToggler: !state.showSidebarToggler,
+    };
+  }
+
+  if (action.type === TOGGLE_THEME) {
+    return {
+      ...state,
+      handleToggleTheme: !state.handleToggleTheme,
     };
   }
 
