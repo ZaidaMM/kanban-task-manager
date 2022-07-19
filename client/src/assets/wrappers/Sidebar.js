@@ -20,7 +20,7 @@ const Wrapper = styled.aside`
     .show-sidebar {
       margin-left: 0;
     }
-    .header {
+    header {
       padding-left: 34px;
     }
     .sidebar-title {
@@ -30,16 +30,44 @@ const Wrapper = styled.aside`
       letter-spacing: 2.4px;
       padding-top: 70px;
       font-size: 12px;
-      padding-left: 32px;
       padding-bottom: 19px;
+      padding-left: 34px;
     }
-    .board-list {
+    .nav-links {
       display: flex;
       flex-direction: column;
-      padding-left: 32px;
+      flex-wrap: nowrap;
     }
-    .board-title {
-      padding-left: 32px;
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      color: var(--grey-300);
+      border-radius: 0 50px 50px 0;
+      width: 276px;
+      padding-left: 34px;
+      padding-top: 14px;
+      padding-bottom: 15px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    /* .nav-link.active {
+      background: var(--primary-200);
+      color: var(--white);
+    } */
+    .nav-link:hover {
+      background: var(--primary-50);
+      color: var(--primary-200);
+    }
+    .nav-link .icon {
+      height: 16px;
+      width: 16px;
+      margin-right: 16px;
+    }
+    .nav-link.create-board {
+      color: var(--primary-200);
+      cursor: pointer;
     }
   }
 `;

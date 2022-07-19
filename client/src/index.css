@@ -12,6 +12,7 @@
 :root {
   /* Colors */
   /* Purple */
+  --primary-50: rgba(168, 164, 255, 25%);
   --primary-100: #a8a4ff;
   --primary-200: #635fc7;
   /* Grey */

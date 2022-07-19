@@ -1,20 +1,31 @@
 import Wrapper from '../assets/wrappers/Sidebar';
 import Logo from './Logo';
+import NavLinks from './NavLinks';
+import { ReactComponent as Icon } from '../assets/images/icon-board.svg';
 
 const Sidebar = () => {
   return (
     <Wrapper>
-      <div className='sidebar-container '>
-        <div className='content show-sidebar'>
-          <div className='header'>
+      <div
+        className='sidebar-container'
+        // {
+        //   showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
+        // }
+      >
+        <div className='content'>
+          <header>
             <Logo />
-          </div>
+          </header>
           <p className='sidebar-title'>
             All Boards <span>(3)</span>{' '}
           </p>
-          <h3 className='board-title'>Board1</h3>
-          <h3 className='board-title'>Board2</h3>
-          <h3 className='board-title'>Board3</h3>
+          <NavLinks />
+          <div className='nav-link create-board'>
+            <span className='icon'>
+              <Icon />
+            </span>
+            + Create New Board
+          </div>
         </div>
       </div>
     </Wrapper>
