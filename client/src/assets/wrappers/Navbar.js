@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
+  z-index: 100;
   height: 97px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: var(--border);
+  background: var(--white);
 
   .nav-center {
     display: flex;
