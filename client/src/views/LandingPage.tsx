@@ -2,6 +2,8 @@
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import Wrapper from '../assets/wrappers/Landing';
+import Dashboard from '../components/Dashboard';
+import { Outlet } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
@@ -12,7 +14,7 @@ const LandingPage = () => {
           <Navbar />
           <div className='dashboard-page'>
             {/* <Outlet /> */}
-            <h4>BOARD</h4>
+            <Dashboard />
           </div>
         </div>
       </main>
