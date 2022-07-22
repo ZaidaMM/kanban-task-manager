@@ -8,45 +8,77 @@ const Column = require('../models/columnModel');
 // route:  GET /api/boards/:boardId/columns
 // access: Public (Will be Private when adding user)
 const getColumns = asyncHandler(async (req, res) => {
-  const board = Board.findById(req.params.boardId);
+  const boards = await Board.findById(req.params.boardId);
 
-  res.status(200).json({ message: 'Get Columns' });
+  const columns = await Column.find();
+
+  res.status(200).json(columns);
 });
 
 // desc:   Create column
 // route:  POST /api/boards/:boardId/columns
 // access: Public (Will be Private when adding user)
 const createColumn = asyncHandler(async (req, res) => {
-  const board = Board.findById(req.params.boardId);
+  const board = await Board.findById(req.params.boardId);
 
-  res.status(200).json({ message: 'Column created' });
+  const column = await Column.create({
+    name: req.body.name,
+    board: req.params.boardId,
+  });
+
+  res.status(200).json(column);
 });
 
 // desc:   Get column
 // route:  GET /api/boards/:boardId/columns/:columnId
 // access: Public (Will be Private when adding user)
 const getColumn = asyncHandler(async (req, res) => {
-  const board = Board.findById(req.params.boardId);
+  const board = await Board.findById(req.params.boardId);
 
-  res.status(200).json({ message: 'Get Column' });
+  const column = await Column.findById(req.params.id);
+
+  if (!column) {
+    res.status(404);
+    throw new Error('Column not found');
+  }
+
+  res.status(200).json(column);
 });
 
 // desc:   Update column
 // route:  POST /api/boards/:boardId/columns/:columnId
 // access: Public (Will be Private when adding user)
 const updateColumn = asyncHandler(async (req, res) => {
-  const board = Board.findById(req.params.boardId);
+  const board = await Board.findById(req.params.boardId);
 
-  res.status(200).json({ message: 'Column updated' });
+  const column = await Column.findById(req.params.id);
+
+  if (!column) {
+    res.status(404);
+    throw new Error('Column not found');
+  }
+
+  const updatedColumn = await Column.findByIdAndUpdate(req.params.id, req.body);
+
+  res.status(200).json(updatedColumn);
 });
 
 // desc:   Delete column
 // route:  DELETE /api/boards/:boardId/columns/:columnId
 // access: Public (Will be Private when adding user)
 const deleteColumn = asyncHandler(async (req, res) => {
-  const board = Board.findById(req.params.boardId);
+  const board = await Board.findById(req.params.boardId);
 
-  res.status(200).json({ message: 'Column deleted' });
+  const column = await Column.findById(req.params.id);
+
+  if (!column) {
+    res.status(404);
+    throw new Error('Column not found');
+  }
+
+  await column.remove();
+
+  res.status(200).json({ message: 'success' });
 });
 
 module.exports = {
