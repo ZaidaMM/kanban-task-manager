@@ -14,6 +14,10 @@ const {
 // If using protected routes
 // router.route('/').get(protectRoute, getTasks).post(protectRoute, createTask);
 
+// Re-route into board routes
+const columnRoutes = require('../routes/columnRoutes');
+router.use('/:boardId/columns', columnRoutes);
+
 router.route('/').get(getBoards).post(createBoard);
 
 router.route('/:id').get(getBoard).put(updateBoard).delete(deleteBoard);
