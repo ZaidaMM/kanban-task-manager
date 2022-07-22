@@ -14,13 +14,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Welcome to Kanban Task Manager' });
-});
-
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/tasks', require('./routes/taskRoutes'));
+app.use('/api/boards', require('./routes/boardRoutes'));
+
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Welcome to Kanban Task Manager' });
+});
 
 app.use(errorHandler);
 
