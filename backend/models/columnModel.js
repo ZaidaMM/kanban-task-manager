@@ -10,6 +10,7 @@ const columnSchema = mongoose.Schema(
     name: {
       type: String,
       required: [true, 'Please add a column name'],
+      unique: true,
     },
   },
   {

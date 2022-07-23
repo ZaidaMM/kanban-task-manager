@@ -10,6 +10,11 @@ const Column = require('../models/columnModel');
 const getColumns = asyncHandler(async (req, res) => {
   const boards = await Board.findById(req.params.boardId);
 
+  if (!board) {
+    res.status(401);
+    throw new Error('Board not found');
+  }
+
   const columns = await Column.find();
 
   res.status(200).json(columns);
@@ -21,8 +26,28 @@ const getColumns = asyncHandler(async (req, res) => {
 const createColumn = asyncHandler(async (req, res) => {
   const board = await Board.findById(req.params.boardId);
 
+  if (!board) {
+    res.status(401);
+    throw new Error('Board not found');
+  }
+
+  const { name } = req.body;
+
+  // Validation
+  if (!name) {
+    res.status(400);
+    throw new Error('Please add a column name');
+  }
+
+  // Find if column already exists
+  const columnAlreadyExists = await Column.findOne({ name });
+  if (columnAlreadyExists) {
+    res.status(400);
+    throw new Error('Column already in use');
+  }
+
   const column = await Column.create({
-    name: req.body.name,
+    name,
     board: req.params.boardId,
   });
 
@@ -35,6 +60,11 @@ const createColumn = asyncHandler(async (req, res) => {
 const getColumn = asyncHandler(async (req, res) => {
   const board = await Board.findById(req.params.boardId);
 
+  if (!board) {
+    res.status(401);
+    throw new Error('Board not found');
+  }
+
   const column = await Column.findById(req.params.id);
 
   if (!column) {
@@ -46,10 +76,15 @@ const getColumn = asyncHandler(async (req, res) => {
 });
 
 // desc:   Update column
-// route:  POST /api/boards/:boardId/columns/:columnId
+// route:  PUT /api/boards/:boardId/columns/:columnId
 // access: Public (Will be Private when adding user)
 const updateColumn = asyncHandler(async (req, res) => {
   const board = await Board.findById(req.params.boardId);
+
+  if (!board) {
+    res.status(401);
+    throw new Error('Board not found');
+  }
 
   const column = await Column.findById(req.params.id);
 
@@ -68,6 +103,11 @@ const updateColumn = asyncHandler(async (req, res) => {
 // access: Public (Will be Private when adding user)
 const deleteColumn = asyncHandler(async (req, res) => {
   const board = await Board.findById(req.params.boardId);
+
+  if (!board) {
+    res.status(401);
+    throw new Error('Board not found');
+  }
 
   const column = await Column.findById(req.params.id);
 
