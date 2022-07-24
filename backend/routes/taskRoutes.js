@@ -1,13 +1,18 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
-const { getTasks, createTask } = require('../controllers/taskController');
+const {
+  getTasks,
+  createTask,
+  getTask,
+  updateTask,
+  deleteTask,
+} = require('../controllers/taskController');
 
 // const { protectRoute } = require('../middleware/authMiddleware');
 
-// If using protected routes
-// router.route('/').get(protectRoute, getTasks).post(protectRoute, createTask);
-
 router.route('/').get(getTasks).post(createTask);
+
+router.route('/:id').get(getTask).put(updateTask).delete(deleteTask);
 
 module.exports = router;

@@ -10,7 +10,7 @@ const Column = require('../models/columnModel');
 const getColumns = asyncHandler(async (req, res) => {
   const boards = await Board.findById(req.params.boardId);
 
-  if (!board) {
+  if (!boards) {
     res.status(401);
     throw new Error('Board not found');
   }
