@@ -16,9 +16,12 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/tasks', require('./routes/taskRoutes'));
 app.use('/api/boards', require('./routes/boardRoutes'));
 // app.use('/api/boards/:boardId/columns', require('./routes/columnRoutes'));
+app.use(
+  '/api/boards/:boardId/columns/:columnId/tasks',
+  require('./routes/taskRoutes')
+);
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to Kanban Task Manager' });
