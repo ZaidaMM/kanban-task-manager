@@ -1,27 +1,46 @@
 import { NavLink } from 'react-router-dom';
-import boards from '../utils/boards';
+// import boards from '../utils/boards';
 import { ReactComponent as Icon } from '../assets/images/icon-board.svg';
+import { useAppContext } from '../context/appContext';
+import { useEffect, useState } from 'react';
 
 const NavLinks = () => {
-  return (
-    <div className='nav-links'>
-      {boards.map((board) => {
-        const { title, id, path } = board;
+  const { boards, getBoards, data } = useAppContext();
 
+  // const [boards, setBoards] = useState([]);
+  // const getBoards = () => {
+  //   fetch('http://localhost:5000/api/boards')
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       }
+  //       throw response;
+  //     })
+  //     .then((data) => {
+  //       setBoards(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log('error fetching data:', error);
+  //       // setError(error);
+  //     })
+  //     .finally(() => {
+  //       // setLoading(false);
+  //     });
+  // };
+  // console.log(boards);
+  useEffect(() => {
+    getBoards();
+    // eslint-disable-next-line
+  }, []);
+  console.log(data);
+
+  return (
+    <div>
+      {data?.map((board) => {
         return (
-          <NavLink
-            to={path}
-            key={id}
-            className='nav-link'
-            // {({ isActive }) =>
-            //   isActive ? 'nav-link active' : 'nav-link'
-            // }
-          >
-            <span className='icon'>
-              <Icon />
-            </span>
-            {title}
-          </NavLink>
+          <div key={board._id}>
+            <span>{board.name}</span>
+          </div>
         );
       })}
     </div>
