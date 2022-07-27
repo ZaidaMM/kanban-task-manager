@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useEffect } from 'react';
+import React, { useContext, useReducer, useState, useEffect } from 'react';
 import reducer from './reducer';
 import axios from 'axios';
 
@@ -29,7 +29,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const baseURL = 'http://localhost:5000/api/';
+  const API_URL = axios.create({ baseURL: 'http://localhost:5000/api/' });
 
   const handleToggleTheme = () => {
     dispatch({ type: TOGGLE_THEME });
@@ -43,23 +43,25 @@ const AppProvider = ({ children }) => {
     dispatch({ type: GET_BOARDS_BEGIN });
 
     try {
-      const { data } = await axios.get(`${baseURL}boards`);
+      const { data } = await axios.get('http://localhost:5000/api/boards');
 
-      const { boards } = data;
+      const { boards, name } = data;
       console.log(data);
 
       dispatch({
         type: GET_BOARDS_SUCCESS,
-        payload: { data },
+        payload: { boards, name },
       });
     } catch (error) {
       console.log(error);
     }
   };
-  // useEffect(() => {
-  //   getBoards();
-  // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    getBoards();
+    // eslint-disable-next-line
+  }, []);
+  // console.log(boards);
+
   return (
     <AppContext.Provider
       value={{
