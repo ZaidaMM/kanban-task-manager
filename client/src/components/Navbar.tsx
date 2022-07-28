@@ -4,7 +4,8 @@ import Button from './Button';
 import Ellipsis from './Ellipsis';
 
 const Navbar = () => {
-  const { selectedBoard } = useAppContext();
+  const { selectedBoard, boards } = useAppContext();
+
   return (
     <Wrapper>
       <div className='nav-center'>

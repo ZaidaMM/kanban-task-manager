@@ -7,14 +7,14 @@ import SidebarToggler from './SidebarToggler';
 import { useAppContext } from '../provider/appProvider';
 
 const Sidebar = () => {
-  const { boards } = useAppContext();
+  const { boards, showSidebar } = useAppContext();
 
   return (
     <Wrapper>
       <div
-      // className={
-      // showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
-      // }
+        className={
+          showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
+        }
       >
         <div className='content'>
           <header>

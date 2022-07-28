@@ -67,6 +67,7 @@ const Wrapper = styled.aside`
     .nav-link:hover {
       background: var(--primary-50);
       color: var(--primary-200);
+      cursor: pointer;
     }
     .nav-link:hover .icon {
       filter: invert(39%) sepia(80%) saturate(854%) hue-rotate(213deg)
@@ -106,16 +107,7 @@ const Wrapper = styled.aside`
     .hide-sidebar-icon {
       margin-right: 10px;
     }
-    .show-sidebar-icon {
-      visibility: hidden;
-      background: var(--primary-200);
-      border-radius: 0 50px 50px 0;
-      width: 56px;
-      height: 48px;
-      transition: var(--transition);
-      display: inline-block;
-      cursor: pointer;
-    }
+
     .mode-toggler-container {
       display: flex;
       align-items: center;

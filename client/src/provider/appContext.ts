@@ -7,6 +7,10 @@ export interface IAppContext {
   setSelectedBoard: (board: IBoardsData | undefined) => void;
   handleToggleTheme: () => void;
   toggleSidebar: () => void;
+  setShowSidebar: (value:boolean) => void;
+  showSidebar: boolean;
+  setShowSidebarToggler: (value:boolean) => void;
+  showSidebarToggler: boolean;
 }
 
 export const AppContext = createContext<IAppContext | undefined>(undefined);

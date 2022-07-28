@@ -15,6 +15,8 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [selectedBoard, setSelectedBoard] = useState<IBoardsData | undefined>();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebarToggler, setShowSidebarToggler] = useState(true);
 
   // Fetch data
   let url = 'http://localhost:5000/api/boards';
@@ -51,7 +53,8 @@ const AppProvider = (props: { children: ReactNode }) => {
   };
 
   const toggleSidebar = () => {
-    console.log('toggleSidebar');
+    setShowSidebar(!showSidebar);
+    setShowSidebarToggler(!showSidebarToggler);
   };
   return (
     <AppContext.Provider
@@ -61,6 +64,10 @@ const AppProvider = (props: { children: ReactNode }) => {
         toggleSidebar,
         selectedBoard,
         setSelectedBoard,
+        setShowSidebar,
+        showSidebar,
+        setShowSidebarToggler,
+        showSidebarToggler,
       }}
     >
       {props.children}
