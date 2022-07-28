@@ -8,6 +8,9 @@ const Board = require('../models/boardModel');
 // access: Public (Will be Private when adding user)
 const getBoards = asyncHandler(async (req, res) => {
   const boards = await Board.find();
+
+  // const totalBoards = await Board.countDocuments();
+
   res.status(200).json(boards);
 });
 

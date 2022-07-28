@@ -4,10 +4,10 @@ import NavLinks from './NavLinks';
 import { ReactComponent as Icon } from '../assets/images/icon-board.svg';
 import ModeToggler from './ModeToggler';
 import SidebarToggler from './SidebarToggler';
-import { useAppContext } from '../context/appContext';
+import { useAppContext } from '../provider/appProvider';
 
 const Sidebar = () => {
-  const { showSidebar, toggleSidebar } = useAppContext();
+  const { boards, showSidebar } = useAppContext();
 
   return (
     <Wrapper>
@@ -21,7 +21,7 @@ const Sidebar = () => {
             <Logo />
           </header>
           <p className='sidebar-title'>
-            All Boards <span>(3)</span>{' '}
+            All Boards <span>({boards?.length})</span>{' '}
           </p>
           <NavLinks />
           <div className='nav-link create-board'>

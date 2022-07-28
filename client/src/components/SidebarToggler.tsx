@@ -1,10 +1,10 @@
 import { ReactComponent as HideSidebar } from '../assets/images/icon-hide-sidebar.svg';
-import { ReactComponent as ShowSidebar } from '../assets/images/icon-show-sidebar.svg';
-import { useAppContext } from '../context/appContext';
+
+import { useAppContext } from '../provider/appProvider';
 import { useState } from 'react';
 
 const SidebarToggler = () => {
-  const { toggleSidebar, showSidebarToggler, showSidebar } = useAppContext();
+  const { toggleSidebar, showSidebarToggler } = useAppContext();
 
   return (
     <div
@@ -15,12 +15,13 @@ const SidebarToggler = () => {
       }
       onClick={toggleSidebar}
     >
+      {' '}
       {showSidebarToggler ? (
         <>
           <HideSidebar className='hide-sidebar-icon' /> Hide Sidebar
         </>
       ) : (
-        <>{/* <ShowSidebar className='show-sidebar-icon' /> */}</>
+        <></>
       )}
     </div>
   );
