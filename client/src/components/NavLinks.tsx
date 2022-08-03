@@ -1,5 +1,6 @@
 import { ReactComponent as Icon } from '../assets/images/icon-board.svg';
 import { useAppContext } from '../provider/appProvider';
+import { Link } from 'react-router-dom';
 
 const NavLinks = () => {
   const { boards, selectedBoard, setSelectedBoard } = useAppContext();

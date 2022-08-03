@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/boards', require('./routes/boardRoutes'));
-// app.use('/api/boards/:boardId/columns', require('./routes/columnRoutes'));
+app.use('/api/boards/:boardId/columns', require('./routes/columnRoutes'));
 app.use(
   '/api/boards/:boardId/columns/:columnId/tasks',
   require('./routes/taskRoutes')

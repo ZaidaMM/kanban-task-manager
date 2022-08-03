@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Board from './components/Board';
 import LandingPage from './views/LandingPage';
 import NewBoard from './views/NewBoard';
 import NewColumn from './views/NewColumn';

@@ -2,6 +2,7 @@ import Wrapper from '../assets/wrappers/Dashboard';
 import Button from './Button';
 import { ReactComponent as ShowSidebar } from '../assets/images/icon-show-sidebar.svg';
 import { useAppContext } from '../provider/appProvider';
+import Board from './Board';
 
 const Dashboard = () => {
   const { selectedBoard, showSidebarToggler, toggleSidebar } = useAppContext();
@@ -12,13 +13,12 @@ const Dashboard = () => {
           <></>
         ) : selectedBoard ? (
           <>
-            {' '}
-            <h1>{selectedBoard?.name}: Columns data should be here</h1>{' '}
+            <Board />
           </>
         ) : (
           <>
             <p className='dashboard-message'>
-              This board is empty. Create a new column to get started.
+              <Board />
             </p>
 
             <Button

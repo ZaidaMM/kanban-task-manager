@@ -9,8 +9,8 @@ const {
 } = require('../controllers/columnController');
 
 // Re-route into column routes
-// const taskRoutes = require('../routes/taskRoutes');
-// router.use('/:boardId/columns/:columnId/tasks', taskRoutes);
+const taskRoutes = require('../routes/taskRoutes');
+router.use('/:columnId/tasks', taskRoutes);
 
 router.route('/').get(getColumns).post(createColumn);
 

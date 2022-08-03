@@ -8,13 +8,10 @@ const Wrapper = styled.main`
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
 
   .dashboard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .dashboard-message {
     color: var(--grey-300);
