@@ -8,17 +8,8 @@ const Wrapper = styled.main`
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
-
-  .dashboard-container {
-  }
-  .dashboard-message {
-    color: var(--grey-300);
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 32px;
-  }
+  justify-content: center;
+  align-items: center;
 
   .show-icon-container {
     background: var(--primary-200);

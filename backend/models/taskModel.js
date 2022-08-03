@@ -12,6 +12,7 @@ const taskSchema = mongoose.Schema(
       required: true,
       ref: 'Column',
     },
+
     title: {
       type: String,
       required: [true, 'Please add a title'],
@@ -20,10 +21,7 @@ const taskSchema = mongoose.Schema(
     description: {
       type: String,
     },
-    // subtask: {
-    //   type: String,
-    //   required: false,
-    // },
+
     status: {
       type: String,
       required: true,

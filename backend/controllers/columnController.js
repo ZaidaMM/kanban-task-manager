@@ -15,7 +15,7 @@ const getColumns = asyncHandler(async (req, res) => {
     throw new Error('Board not found');
   }
 
-  const columns = await Column.find();
+  const columns = await Column.find({ board: req.params.boardId });
 
   res.status(200).json(columns);
 });

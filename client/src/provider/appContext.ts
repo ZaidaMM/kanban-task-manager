@@ -6,6 +6,7 @@ import { IBoardsData, IColumnsData,
 
 export interface IAppContext {
   boards: IBoardsData[] | undefined;
+  board: IBoardsData | undefined;
   selectedBoard: IBoardsData | undefined;
   setSelectedBoard: (board: IBoardsData | undefined) => void;
   handleToggleTheme: () => void;

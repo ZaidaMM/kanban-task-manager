@@ -7,6 +7,7 @@ const columnSchema = mongoose.Schema(
       required: true,
       ref: 'Board',
     },
+
     name: {
       type: String,
       required: [true, 'Please add a column name'],

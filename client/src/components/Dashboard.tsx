@@ -3,31 +3,17 @@ import Button from './Button';
 import { ReactComponent as ShowSidebar } from '../assets/images/icon-show-sidebar.svg';
 import { useAppContext } from '../provider/appProvider';
 import Board from './Board';
+import { useParams } from 'react-router-dom';
 
 const Dashboard = () => {
   const { selectedBoard, showSidebarToggler, toggleSidebar } = useAppContext();
+
+  const params = useParams();
+  const { boardId } = useParams();
   return (
     <Wrapper>
       <div className='dashboard-container'>
-        {!selectedBoard ? (
-          <></>
-        ) : selectedBoard ? (
-          <>
-            <Board />
-          </>
-        ) : (
-          <>
-            <p className='dashboard-message'>
-              <Board />
-            </p>
-
-            <Button
-              children='+ Add New Column'
-              onClick={() => console.log('Add new column')}
-            />
-          </>
-        )}
-
+        <Board />
         <div
           className={
             showSidebarToggler

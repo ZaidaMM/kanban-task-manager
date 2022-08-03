@@ -18,6 +18,7 @@ function useAppContext() {
 
 const AppProvider = (props: { children: ReactNode }) => {
   const [boards, setBoards] = useState<IBoardsData[]>([]);
+  const [board, setBoard] = useState<IBoardsData>();
   const [selectedBoard, setSelectedBoard] = useState<IBoardsData | undefined>();
   const [columns, setColumns] = useState<IColumnsData[]>([]);
   // const [tasks, setTasks] = useState<ITasksData[]>([]);
@@ -26,14 +27,14 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showSidebarToggler, setShowSidebarToggler] = useState(true);
 
-  const params = useParams();
-  // const { selectedBoardId } = useParams();
+  // const params = useParams();
+
   // const { selectedColumnId } = useParams();
 
-  let url = 'http://localhost:5000/api/boards?';
+  let API_URL = 'http://localhost:5000/api/boards?';
 
   const getBoards = () => {
-    fetch(url)
+    fetch(API_URL)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -52,7 +53,6 @@ const AppProvider = (props: { children: ReactNode }) => {
         // setIsLoading(false);
       });
   };
-
   useEffect(() => {
     getBoards();
     // eslint - disable - next - line;
@@ -71,53 +71,74 @@ const AppProvider = (props: { children: ReactNode }) => {
   console.log(selectedBoard);
   console.log(selectedBoard?._id);
 
-  const selectedBoardId = useParams();
+  // console.log(selectedBoardId);
+
+  const selectedBoardId = selectedBoard?._id;
   console.log(selectedBoardId);
 
   const getColumns = () => {
-    // console.log(selectedBoard);
-    fetch(`http://localhost:5000/api/boards?/:${selectedBoard?._id}/columns?`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw response;
-        console.log(response);
-      })
-      .then((data) => {
-        setColumns(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log('error fetching data:', error);
-        // setError(error);
-      })
-      .finally(() => {
-        // setIsLoading(false);
-      });
+    boards.filter((board) => {
+      if (board._id === selectedBoard?._id) {
+        fetch(`http://localhost:5000/api/boards?/${board._id}/columns?`)
+          .then((response) => {
+            if (response.ok) {
+              console.log(response);
+              return response.json();
+            }
+            throw response;
+          })
+          .then((data) => {
+            setColumns(data);
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log('error fetching data:', error);
+            // setError(error);
+          })
+          .finally(() => {
+            // setIsLoading(false);
+          });
+      }
+    });
 
-    console.log(columns);
+    // if (selectedBoard) {
+    //   console.log(selectedBoard);
+    //   fetch(`http://localhost:5000/api/boards?/:${selectedBoardId}/columns?`)
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         console.log(response);
+    //         return response.json();
+    //       }
+    //       throw response;
+    //     })
+
+    //     .then((data) => {
+    //       setColumns(data);
+    //       console.log(data);
+    //     })
+    //     .catch((error) => {
+    //       console.log('error fetching data:', error);
+    //       // setError(error);
+    //     })
+    //     .finally(() => {
+    //       // setIsLoading(false);
+    //     });
+
+    //   console.log(columns);
+    // }
   };
 
   useEffect(() => {
     getColumns();
     // eslint - disable - next - line;
-    console.log(columns);
   }, []);
   console.log(columns);
-
-  // console.log(selectedColumn);
-  // console.log(selectedColumn?._id);
-  // console.log(selectedColumnId);
-
-  // const getTasks = () => {
-  //   console.log(tasks);
-  // };
 
   return (
     <AppContext.Provider
       value={{
         boards,
+        board,
         handleToggleTheme,
         toggleSidebar,
         selectedBoard,

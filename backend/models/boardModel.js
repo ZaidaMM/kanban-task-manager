@@ -8,6 +8,7 @@ const boardSchema = mongoose.Schema(
     },
     _id: {
       type: String,
+      required: false,
     },
   },
   {
