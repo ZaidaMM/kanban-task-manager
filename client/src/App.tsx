@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<LandingPage />} />
-          <Route path='/:id' element={<LandingPage />} />
+          <Route path='/:id' element={<Board />} />
 
           <Route path='/new-board' element={<NewBoard />} />
           <Route path='/new-column' element={<NewColumn />} />

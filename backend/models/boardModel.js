@@ -6,10 +6,10 @@ const boardSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a Board Name'],
     },
-    _id: {
-      type: String,
-      required: false,
-    },
+    // _id: {
+    //   type: String,
+    //   required: false,
+    // },
   },
   {
     timestamps: true,

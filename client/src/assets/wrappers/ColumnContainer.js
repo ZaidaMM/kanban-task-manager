@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
+  /* display: flex;
+
+  align-items: start;
+  justify-content: start; */
   .column-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -23,13 +27,13 @@ const Wrapper = styled.section`
     border-radius: 50%;
     align-items: center;
   }
-  .blue-dot {
+  .blue {
     background-color: #49c4e5;
   }
-  .purple-dot {
+  .purple {
     background-color: #8471f2;
   }
-  .green-dot {
+  .green {
     background-color: #67e2ae;
   }
   .column-title {

@@ -2,13 +2,9 @@ import styled from 'styled-components';
 
 const Wrapper = styled.section`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: start;
+  justify-content: start;
   .board-container {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
   }
   .message-container {
     display: flex;
@@ -21,6 +17,10 @@ const Wrapper = styled.section`
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 32px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
   }
 `;
 export default Wrapper;

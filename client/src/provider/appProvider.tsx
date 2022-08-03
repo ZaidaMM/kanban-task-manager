@@ -27,9 +27,8 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showSidebarToggler, setShowSidebarToggler] = useState(true);
 
-  // const params = useParams();
-
-  // const { selectedColumnId } = useParams();
+  const params = useParams();
+  // const selectedBoardId = useParams();
 
   let API_URL = 'http://localhost:5000/api/boards?';
 
@@ -71,67 +70,66 @@ const AppProvider = (props: { children: ReactNode }) => {
   console.log(selectedBoard);
   console.log(selectedBoard?._id);
 
-  // console.log(selectedBoardId);
+  const getBoard = () => {
+    const id = selectedBoard?._id;
 
-  const selectedBoardId = selectedBoard?._id;
-  console.log(selectedBoardId);
-
-  const getColumns = () => {
-    boards.filter((board) => {
-      if (board._id === selectedBoard?._id) {
-        fetch(`http://localhost:5000/api/boards?/${board._id}/columns?`)
-          .then((response) => {
-            if (response.ok) {
-              console.log(response);
-              return response.json();
-            }
-            throw response;
-          })
-          .then((data) => {
-            setColumns(data);
-            console.log(data);
-          })
-          .catch((error) => {
-            console.log('error fetching data:', error);
-            // setError(error);
-          })
-          .finally(() => {
-            // setIsLoading(false);
-          });
-      }
-    });
-
-    // if (selectedBoard) {
-    //   console.log(selectedBoard);
-    //   fetch(`http://localhost:5000/api/boards?/:${selectedBoardId}/columns?`)
-    //     .then((response) => {
-    //       if (response.ok) {
-    //         console.log(response);
-    //         return response.json();
-    //       }
-    //       throw response;
-    //     })
-
-    //     .then((data) => {
-    //       setColumns(data);
-    //       console.log(data);
-    //     })
-    //     .catch((error) => {
-    //       console.log('error fetching data:', error);
-    //       // setError(error);
-    //     })
-    //     .finally(() => {
-    //       // setIsLoading(false);
-    //     });
-
-    //   console.log(columns);
-    // }
+    fetch(API_URL + id)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then((data) => {
+        setSelectedBoard(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log('error fetching data:', error);
+        // setError(error);
+      })
+      .finally(() => {
+        // setIsLoading(false);
+      });
+    getBoard();
+    getColumns();
   };
 
-  useEffect(() => {
-    getColumns();
-    // eslint - disable - next - line;
-  }, []);
+  // useEffect(() => {
+  //   getBoard();
+  //   // eslint - disable - next - line;
+  // }, []);
+  console.log(selectedBoard);
+
+  const getColumns = () => {
+    const id = selectedBoard?._id;
+
+    fetch(API_URL + id + columns)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then((data) => {
+        setColumns(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log('error fetching data:', error);
+        // setError(error);
+      })
+      .finally(() => {
+        // setIsLoading(false);
+      });
+  };
+
+  console.log(columns);
+
+  // useEffect(() => {
+  //   getColumns();
+  //   // eslint - disable - next - line;
+  // }, [getBoard]);
   console.log(columns);
 
   return (

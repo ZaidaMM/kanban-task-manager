@@ -4,36 +4,44 @@ import Column from './Column';
 // import Task from './Task';
 import { IBoardsData, IColumnsData } from '../interfaces/IBoardsData';
 import Button from './Button';
+// import { boards } from '../utils/boards';
+import { Message } from './InitialMessage';
 
 const Board = () => {
-  const { columns, boards, selectedBoard } = useAppContext();
+  const { columns, selectedBoard } = useAppContext();
   return (
     <Wrapper>
       <div className='board-container'>
         {!selectedBoard ? (
           <>
             {' '}
-            <div className='message-container'>
-              <p className='dashboard-message'>
-                This board is empty. Create a new Column to get started.
-              </p>
-              <Button
-                children='+ Add New Column'
-                onClick={() => console.log('Add new column')}
-              />
-            </div>
+            <Message />
           </>
         ) : (
-          columns?.map((column) => (
-            <Column
-              key={column._id}
-              name={column.name}
-              _id={column._id}
-              tasks={[]}
-              customClass={`column-dot column-1`}
-              quantity={columns.length}
-            />
-          ))
+          <>
+            {selectedBoard.columns?.map((col) => {
+              return (
+                <div>
+                  <h1>{col.name}</h1>{' '}
+                  <p>
+                    {col.quantity}, board id: {selectedBoard._id}
+                  </p>
+                </div>
+              );
+            })}
+
+            <Column name={''} _id={''} />
+            {/* {columns?.map((column) => (
+              <Column
+                key={column._id}
+                name={column.name}
+                _id={column._id}
+                tasks={[]}
+                customClass={`column-dot`}
+                quantity={columns.length}
+              />
+            ))} */}
+          </>
         )}
 
         {/* <div className='task'></div> */}
