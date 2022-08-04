@@ -5,6 +5,7 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr;
     z-index: 0;
+    margin-top: -24px;
   }
   .dashboard-page {
     width: 90vw;

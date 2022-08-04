@@ -4,11 +4,10 @@ const Wrapper = styled.nav`
   z-index: 100;
   height: 97px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   border-bottom: var(--border);
   background: var(--white);
-
   .nav-center {
     display: flex;
     justify-content: space-between;
@@ -21,9 +20,9 @@ const Wrapper = styled.nav`
   @media (min-width: 992px) {
     position: sticky;
     top: 0;
-
     .nav-center {
-      width: 90%;
+      width: 80%;
+      margin-left: 32px;
     }
   }
 `;

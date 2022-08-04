@@ -8,13 +8,15 @@ const Wrapper = styled.aside`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 100vh;
+    position: sticky;
+    bottom: 0;
     .sidebar-container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       width: 260px;
-      min-height: 100vh;
-      height: 100%;
+      height: 100vh;
       margin-left: -650px;
       transition: var(--transition);
     }
@@ -89,6 +91,8 @@ const Wrapper = styled.aside`
     .toggler.container {
       display: flex;
       flex-direction: column;
+      position: sticky;
+      bottom: 47px;
     }
     .sidebar-toggler {
       display: flex;

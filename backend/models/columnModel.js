@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const columnSchema = mongoose.Schema(
   {
+    id: mongoose.Schema.Types.ObjectId,
     board: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: 'Board',
     },
+
     name: {
       type: String,
-      required: [true, 'Please add a column name'],
       unique: true,
     },
   },

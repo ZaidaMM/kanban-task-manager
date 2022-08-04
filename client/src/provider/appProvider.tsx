@@ -1,6 +1,12 @@
 import { ReactNode, useState, useEffect, useContext } from 'react';
-import { IBoardsData } from '../interfaces/IBoardsData';
+import {
+  IBoardsData,
+  IColumnsData,
+  ITasksData,
+  ISubtasksData,
+} from '../interfaces/IBoardsData';
 import { AppContext } from './appContext';
+import { useParams } from 'react-router-dom';
 
 function useAppContext() {
   const context = useContext(AppContext);
@@ -12,17 +18,25 @@ function useAppContext() {
 
 const AppProvider = (props: { children: ReactNode }) => {
   const [boards, setBoards] = useState<IBoardsData[]>([]);
+  const [board, setBoard] = useState<IBoardsData>();
   const [selectedBoard, setSelectedBoard] = useState<IBoardsData | undefined>();
+  const [columns, setColumns] = useState<IColumnsData[]>([]);
+  const [column, setColumn] = useState<IColumnsData>();
+  // const [tasks, setTasks] = useState<ITasksData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showSidebar, setShowSidebar] = useState(true);
   const [showSidebarToggler, setShowSidebarToggler] = useState(true);
 
-  // Fetch data
-  let url = 'http://localhost:5000/api/boards';
+  const params = useParams();
+  // const selectedBoardId = useParams();
+
+  let API_URL = 'http://localhost:5000/api/boards?';
+  const idUrl = selectedBoard?._id;
+  const columnsUrl = selectedBoard?.columns;
 
   const getBoards = () => {
-    fetch(url)
+    fetch(API_URL)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -41,7 +55,6 @@ const AppProvider = (props: { children: ReactNode }) => {
         // setIsLoading(false);
       });
   };
-
   useEffect(() => {
     getBoards();
     // eslint - disable - next - line;
@@ -56,10 +69,73 @@ const AppProvider = (props: { children: ReactNode }) => {
     setShowSidebar(!showSidebar);
     setShowSidebarToggler(!showSidebarToggler);
   };
+
+  console.log(selectedBoard);
+  console.log(selectedBoard?._id);
+
+  const getBoard = () => {
+    fetch(API_URL + idUrl)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then((data) => {
+        setSelectedBoard(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log('error fetching data:', error);
+        // setError(error);
+      })
+      .finally(() => {
+        // setIsLoading(false);
+      });
+    getBoard();
+    getColumns();
+  };
+
+  // useEffect(() => {
+  //   getBoard();
+  //   // eslint - disable - next - line;
+  // }, []);
+  console.log(selectedBoard);
+
+  const getColumns = () => {
+    fetch(API_URL + idUrl + columnsUrl)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then((data) => {
+        setColumns(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log('error fetching data:', error);
+        // setError(error);
+      })
+      .finally(() => {
+        // setIsLoading(false);
+      });
+  };
+
+  console.log(columns);
+
+  useEffect(() => {
+    getColumns();
+    // eslint - disable - next - line;
+  }, []);
+  console.log(columns);
+
   return (
     <AppContext.Provider
       value={{
         boards,
+        board,
         handleToggleTheme,
         toggleSidebar,
         selectedBoard,
@@ -68,6 +144,9 @@ const AppProvider = (props: { children: ReactNode }) => {
         showSidebar,
         setShowSidebarToggler,
         showSidebarToggler,
+        columns,
+        column,
+        // selectedColumn
       }}
     >
       {props.children}

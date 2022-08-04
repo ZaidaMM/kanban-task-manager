@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Board from './components/Board';
 import LandingPage from './views/LandingPage';
 import NewBoard from './views/NewBoard';
 import NewColumn from './views/NewColumn';
@@ -11,6 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<LandingPage />} />
+          <Route path='/:id' element={<Board />} />
 
           <Route path='/new-board' element={<NewBoard />} />
           <Route path='/new-column' element={<NewColumn />} />

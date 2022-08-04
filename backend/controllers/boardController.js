@@ -9,8 +9,6 @@ const Board = require('../models/boardModel');
 const getBoards = asyncHandler(async (req, res) => {
   const boards = await Board.find();
 
-  // const totalBoards = await Board.countDocuments();
-
   res.status(200).json(boards);
 });
 
@@ -27,6 +25,7 @@ const createBoard = asyncHandler(async (req, res) => {
 
   const board = await Board.create({
     name,
+    columns: [await Column.find()],
   });
   res.status(200).json(board);
 });
