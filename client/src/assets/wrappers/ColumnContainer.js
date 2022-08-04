@@ -18,8 +18,8 @@ const Wrapper = styled.section`
     flex-direction: row;
     justify-content: left;
     text-align: center;
-    /* flex-wrap: nowrap; */
-    margin-left: 24px;
+    flex-wrap: nowrap;
+    /* margin-left: 24px; */
     .column-dot {
       height: 15px;
       width: 15px;

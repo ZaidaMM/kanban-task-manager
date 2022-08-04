@@ -13,7 +13,11 @@ const Board = () => {
 
   return (
     <Wrapper>
-      <div className='board-container'>
+      <div
+        className={
+          !selectedBoard ? 'board-container -centered' : 'board-container'
+        }
+      >
         {!selectedBoard ? (
           <>
             {' '}

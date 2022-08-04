@@ -2,7 +2,7 @@ import Button from './Button';
 
 export const Message = () => {
   return (
-    <div className='message-container'>
+    <div className='message-container centered'>
       <p className='dashboard-message'>
         This board is empty. Create a new Column to get started.
       </p>

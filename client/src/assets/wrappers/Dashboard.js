@@ -4,13 +4,10 @@ const Wrapper = styled.main`
   background-color: var(--grey-100);
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   .show-icon-container {
     background: var(--primary-200);
     border-radius: 0 50px 50px 0;

@@ -15,7 +15,14 @@ const Column = ({ customClass, name, quantity, _id }: IColumnsData) => {
             {name} (<span>{quantity}</span>)
           </p>
         </div>
-        <div className='tasks-container'></div>
+        {/* <div className='tasks-container'>
+          <Task
+            key={1}
+            title={'Build UI for onboarding flow'}
+            description={''}
+            status={'Todo'}
+          />
+        </div> */}
 
         {/* <div className='column-name'>
           <div>

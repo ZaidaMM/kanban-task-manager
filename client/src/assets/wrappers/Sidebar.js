@@ -8,6 +8,9 @@ const Wrapper = styled.aside`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 100vh;
+    position: sticky;
+    bottom: 0;
     .sidebar-container {
       display: flex;
       flex-direction: column;

@@ -8,11 +8,13 @@ const Wrapper = styled.section`
     justify-content: start;
     height: 100%;
   }
-  .message-container {
+
+  .message-container.centered {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 80vh;
   }
   .dashboard-message {
     color: var(--grey-300);
@@ -30,8 +32,9 @@ const Wrapper = styled.section`
     align-items: center;
     text-align: center;
     width: 280px;
-    height: 70vh;
-    margin-top: 63px;
+    height: 100vh;
+    min-height: 100%;
+    margin-top: 39px;
     margin-bottom: 50px;
     margin-left: 24px;
     border-radius: 6px;
