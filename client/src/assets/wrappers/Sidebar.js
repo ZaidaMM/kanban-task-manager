@@ -4,10 +4,11 @@ const Wrapper = styled.aside`
   border-right: var(--border);
   display: none;
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     min-height: 100vh;
     position: sticky;
     bottom: 0;

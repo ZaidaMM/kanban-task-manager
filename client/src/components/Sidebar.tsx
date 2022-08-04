@@ -28,7 +28,12 @@ const Sidebar = () => {
             <span className='icon'>
               <Icon />
             </span>
-            + Create New Board
+            <div
+              className='create-board'
+              onClick={() => console.log('create board')}
+            >
+              + Create New Board
+            </div>
           </div>
         </div>
         <div className='toggle-container'>

@@ -8,6 +8,7 @@ const Wrapper = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .show-icon-container {
     background: var(--primary-200);
     border-radius: 0 50px 50px 0;
