@@ -21,11 +21,13 @@ export interface ITasksData {
   status?: string;
   customClass?: string;
   subtasks?: ISubtasksData[];
-  
+  completedSubtasks? : number;
+  totalSubtasks?:number;
+
 }
 
 export interface ISubtasksData {
-  subtitle: string;
+  subtaskTitle: string;
   isCompleted?: number | string;
   totalSubtasks: number | string;
   customClass?: string;

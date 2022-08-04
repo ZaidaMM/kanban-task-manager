@@ -21,6 +21,7 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [board, setBoard] = useState<IBoardsData>();
   const [selectedBoard, setSelectedBoard] = useState<IBoardsData | undefined>();
   const [columns, setColumns] = useState<IColumnsData[]>([]);
+  const [column, setColumn] = useState<IColumnsData>();
   // const [tasks, setTasks] = useState<ITasksData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -31,6 +32,8 @@ const AppProvider = (props: { children: ReactNode }) => {
   // const selectedBoardId = useParams();
 
   let API_URL = 'http://localhost:5000/api/boards?';
+  const idUrl = selectedBoard?._id;
+  const columnsUrl = selectedBoard?.columns;
 
   const getBoards = () => {
     fetch(API_URL)
@@ -71,9 +74,7 @@ const AppProvider = (props: { children: ReactNode }) => {
   console.log(selectedBoard?._id);
 
   const getBoard = () => {
-    const id = selectedBoard?._id;
-
-    fetch(API_URL + id)
+    fetch(API_URL + idUrl)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -102,9 +103,7 @@ const AppProvider = (props: { children: ReactNode }) => {
   console.log(selectedBoard);
 
   const getColumns = () => {
-    const id = selectedBoard?._id;
-
-    fetch(API_URL + id + columns)
+    fetch(API_URL + idUrl + columnsUrl)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -126,10 +125,10 @@ const AppProvider = (props: { children: ReactNode }) => {
 
   console.log(columns);
 
-  // useEffect(() => {
-  //   getColumns();
-  //   // eslint - disable - next - line;
-  // }, [getBoard]);
+  useEffect(() => {
+    getColumns();
+    // eslint - disable - next - line;
+  }, []);
   console.log(columns);
 
   return (
@@ -146,6 +145,7 @@ const AppProvider = (props: { children: ReactNode }) => {
         setShowSidebarToggler,
         showSidebarToggler,
         columns,
+        column,
         // selectedColumn
       }}
     >

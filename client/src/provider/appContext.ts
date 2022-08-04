@@ -16,6 +16,7 @@ export interface IAppContext {
   setShowSidebarToggler: (value:boolean) => void;
   showSidebarToggler: boolean;
   columns: IColumnsData[] | undefined;
+  column: IColumnsData | undefined;
   // selectedColumn: IColumnsData | undefined;
   // setSelectedColumn: (column: IColumnsData | undefined) => void;
 

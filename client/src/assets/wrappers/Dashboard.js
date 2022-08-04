@@ -6,10 +6,10 @@ const Wrapper = styled.main`
   width: 100%;
   margin: 0;
   padding: 0;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
 
   .show-icon-container {
     background: var(--primary-200);

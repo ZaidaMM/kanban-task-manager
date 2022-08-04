@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const boardSchema = mongoose.Schema(
   {
-    // id: mongoose.Schema.Types.ObjectId,
+    id: mongoose.Schema.Types.ObjectId,
     name: {
       type: String,
       required: [true, 'Please add a Board Name'],
