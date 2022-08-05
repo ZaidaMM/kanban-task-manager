@@ -14,7 +14,11 @@ const NavLinks = () => {
               setSelectedBoard(board);
             }}
             key={board._id}
-            className='nav-link'
+            className={
+              selectedBoard?.name === board.name
+                ? 'nav-link active'
+                : 'nav-link'
+            }
           >
             <span className='icon'>
               <Icon />

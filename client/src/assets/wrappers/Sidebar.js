@@ -52,13 +52,13 @@ const Wrapper = styled.aside`
     font-size: 15px;
     font-weight: 700;
   }
-  /* .nav-link.active {
+  .nav-link.active {
     background: var(--primary-200);
     color: var(--white);
   }
   .nav-link.active .icon {
     filter: saturate(0%) brightness(0%) invert(100%) opacity(1);
-  } */
+  }
   .nav-link:hover {
     background: var(--primary-50);
     color: var(--primary-200);
