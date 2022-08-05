@@ -1,9 +1,53 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  /* height: 70%;
-  width: 70%;
-  background-color: red; */
+  .dashboard-container {
+    margin-left: 297px;
+  }
+  .message-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 42%;
+  }
+  .initial-message {
+    color: var(--grey-300);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 768px) {
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 22%;
+      margin-left: 0;
+    }
+    .initial-message {
+      text-align: center;
+      flex-wrap: wrap;
+      max-width: 343px;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 991px) {
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 48%;
+    }
+    .initial-message {
+      text-align: center;
+      flex-wrap: wrap;
+      max-width: 343px;
+    }
+  }
 `;
 
 export default Wrapper;

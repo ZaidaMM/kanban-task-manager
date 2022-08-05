@@ -1,0 +1,40 @@
+import styled from 'styled-components';
+
+const Wrapper = styled.section`
+  .board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -297px;
+  }
+
+  .columns-container {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    height: 100%;
+    margin-top: 24px;
+    margin-left: 24px;
+  }
+  .create-new-column {
+    background-color: var(--grey-200);
+    color: var(--grey-300);
+    font-weight: 700;
+    /* font-size: 24px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 30px;
+    width: 280px;
+    height: 100vh;
+    min-height: 100%;
+    margin-top: 39px;
+    margin-bottom: 50px;
+    margin-left: 24px;
+    border-radius: 6px;
+  }
+`;
+
+export default Wrapper;
