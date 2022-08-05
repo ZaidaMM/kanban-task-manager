@@ -1,7 +1,34 @@
 import Dashboard from '../components/Dashboard';
 import { useAppContext } from '../provider/appProvider';
+import { ReactComponent as ShowSidebar } from '../assets/images/icon-show-sidebar.svg';
 
 const LandingPage = () => {
-  return <div>{/* <Dashboard /> */}</div>;
+  const { selectedBoard, showSidebarToggler, toggleSidebar } = useAppContext();
+  return (
+    <>
+      <div
+        className={
+          showSidebarToggler
+            ? 'show-icon-container hide-icon-container'
+            : 'show-icon-container '
+        }
+        onClick={toggleSidebar}
+      >
+        {' '}
+        {showSidebarToggler ? (
+          <></>
+        ) : (
+          <>
+            {' '}
+            <ShowSidebar
+              className='show-sidebar-icon'
+              onClick={toggleSidebar}
+            />
+          </>
+        )}
+      </div>
+      <div>{/* <Dashboard /> */}</div>
+    </>
+  );
 };
 export default LandingPage;

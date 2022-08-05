@@ -37,7 +37,7 @@
   --borderRadius: 24px;
   --transition: 0.3s ease-in-out all;
   --letterSpacing: 1px;
-  --border: solid 2px var(--grey-200);
+  --border: solid 1px var(--grey-200);
 }
 
 body {
