@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.main`
+  margin-left: 260px;
+  margin-top: 97px;
   background-color: var(--grey-100);
   height: 100%;
   width: 100%;

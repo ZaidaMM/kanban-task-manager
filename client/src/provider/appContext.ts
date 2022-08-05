@@ -19,8 +19,9 @@ export interface IAppContext {
   column: IColumnsData | undefined;
   // selectedColumn: IColumnsData | undefined;
   // setSelectedColumn: (column: IColumnsData | undefined) => void;
-
-  
+  setShowBoardModal: (value:boolean) => void;
+  showBoardModal: boolean;
+  openBoardModal: () => void;
 }
 
 export const AppContext = createContext<IAppContext | undefined>(undefined);

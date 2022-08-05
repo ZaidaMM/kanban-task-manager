@@ -113,3 +113,8 @@ ul {
 .loading-center {
   margin: 0 auto;
 }
+
+.layout {
+  display: flex;
+  flex-direction: row;
+}

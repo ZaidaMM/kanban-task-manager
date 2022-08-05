@@ -27,7 +27,7 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [error, setError] = useState('');
   const [showSidebar, setShowSidebar] = useState(true);
   const [showSidebarToggler, setShowSidebarToggler] = useState(true);
-
+  const [showBoardModal, setShowBoardModal] = useState(false);
   const params = useParams();
   // const selectedBoardId = useParams();
 
@@ -131,6 +131,10 @@ const AppProvider = (props: { children: ReactNode }) => {
   }, []);
   console.log(columns);
 
+  const openBoardModal = () => {
+    setShowBoardModal((prevShowBoardModal) => !prevShowBoardModal);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -146,7 +150,10 @@ const AppProvider = (props: { children: ReactNode }) => {
         showSidebarToggler,
         columns,
         column,
-        // selectedColumn
+        // selectedColumn,
+        showBoardModal,
+        setShowBoardModal,
+        openBoardModal,
       }}
     >
       {props.children}

@@ -5,9 +5,16 @@ import { ReactComponent as Icon } from '../assets/images/icon-board.svg';
 import ModeToggler from './ModeToggler';
 import SidebarToggler from './SidebarToggler';
 import { useAppContext } from '../provider/appProvider';
+import ModalComponent from './ModalComponent';
 
 const Sidebar = () => {
-  const { boards, showSidebar } = useAppContext();
+  const {
+    boards,
+    showSidebar,
+    openBoardModal,
+    showBoardModal,
+    setShowBoardModal,
+  } = useAppContext();
 
   return (
     <Wrapper>
@@ -24,17 +31,16 @@ const Sidebar = () => {
             All Boards <span>({boards?.length})</span>{' '}
           </p>
           <NavLinks />
-          <div className='nav-link create-board'>
+          <div className='nav-link create-board' onClick={openBoardModal}>
             <span className='icon'>
               <Icon />
             </span>
-            <div
-              className='create-board'
-              onClick={() => console.log('create board')}
-            >
-              + Create New Board
-            </div>
+            + Create New Board
           </div>
+          <ModalComponent
+            showBoardModal={showBoardModal}
+            setShowBoardModal={setShowBoardModal}
+          />
         </div>
         <div className='toggle-container'>
           <ModeToggler />
