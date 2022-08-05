@@ -10,7 +10,7 @@ const Wrapper = styled.nav`
   border-bottom: var(--border);
   background: var(--white);
   position: absolute;
-  right: 0;
+  right: 32px;
   .nav-center {
     display: flex;
     justify-content: space-between;

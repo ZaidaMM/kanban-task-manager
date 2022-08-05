@@ -8,12 +8,15 @@ const Navbar = () => {
 
   return (
     <Wrapper>
-      <div className='nav-center'>
-        <h1 className='nav-title '>{selectedBoard?.name}</h1>
+      <div className={showSidebar ? 'nav-center' : 'nav-center expanded'}>
+        <div className='nav-header'>
+          <h1 className='nav-title '>{selectedBoard?.name}</h1>
+        </div>
         <div className='nav-buttons '>
           <Button
-            children='+ Add New Task'
+            children={'+ Add New Task'}
             onClick={() => console.log('button clicked')}
+            customClass='btn'
           />
           <Ellipsis onClick={() => console.log('ellipsisBtn clicked')} />
         </div>

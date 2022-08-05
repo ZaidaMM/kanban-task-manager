@@ -1,12 +1,13 @@
 interface Props {
   children?: React.ReactNode;
   onClick: () => void;
+  customClass?: string;
 }
 
-const Button = ({ children, onClick }: Props) => {
+const Button = ({ children, onClick, customClass }: Props) => {
   return (
     <>
-      <button onClick={onClick} className='btn'>
+      <button onClick={onClick} className={customClass}>
         {children}
       </button>
     </>

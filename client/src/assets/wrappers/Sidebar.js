@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.aside`
-  width: 297px;
-  height: 100vh;
-  z-index: 20;
-  padding-top: 34px;
-  border-right: var(--border);
-  position: absolute;
-  bottom: 0;
-  display: flex;
   .sidebar-container {
+    width: 297px;
+    height: 100vh;
+    z-index: 20;
+    /* padding-top: 34px; */
+    border-right: var(--border);
+    position: absolute;
+    bottom: 0;
+    display: flex;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -21,14 +21,15 @@ const Wrapper = styled.aside`
   }
 
   .logo {
+    padding-top: 48px;
     padding-left: 34px;
+    padding-bottom: 54px;
   }
   .sidebar-title {
     text-transform: uppercase;
     color: var(--grey-300);
     font-weight: 700;
     letter-spacing: 2.4px;
-    padding-top: 70px;
     padding-left: 34px;
     font-size: 12px;
     padding-bottom: 19px;
@@ -109,7 +110,7 @@ const Wrapper = styled.aside`
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
-    margin-left: 28px;
+    margin-left: 32px;
     border-radius: 6px;
     width: 235px;
     height: 48px;
