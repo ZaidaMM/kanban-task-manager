@@ -3,8 +3,12 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
   .board-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: start;
+    justify-content: start;
+    margin-right: 0;
+    margin-bottom: 0;
+    overflow: visible;
+    height: 100vh;
     margin-left: -297px;
   }
 
@@ -13,7 +17,8 @@ const Wrapper = styled.section`
     flex-direction: row;
     align-items: start;
     justify-content: start;
-    height: 100%;
+    min-height: 100vh;
+    width: 100vw;
     margin-top: 24px;
     margin-left: 24px;
   }
@@ -27,7 +32,7 @@ const Wrapper = styled.section`
     align-items: center;
     text-align: center;
     line-height: 30px;
-    width: 280px;
+    min-width: 280px;
     height: 100vh;
     min-height: 100%;
     margin-top: 39px;

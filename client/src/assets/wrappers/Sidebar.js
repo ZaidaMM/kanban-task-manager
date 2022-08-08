@@ -15,6 +15,8 @@ const Wrapper = styled.aside`
     justify-content: space-between;
     transition: var(--transition);
     margin-left: -650px;
+    position: fixed;
+    background-color: var(--white);
   }
   .show-sidebar {
     margin-left: 0;

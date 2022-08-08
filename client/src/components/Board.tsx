@@ -14,28 +14,21 @@ const Board = () => {
   return (
     <Wrapper>
       <div className='board-container'>
-        {/* {selectedBoard.columns?.map((col) => {
-              return (
-                <div>
-                  <h1>{col.name}</h1>{' '}
-                  <p>
-                    {col.quantity}, board id: {selectedBoard._id}
-                  </p>
-                </div>
-              );
-            })} */}
-
-        {/* {columns?.map((column) => (
+        <div className='columns-container'>
+          <div className='column'>
+            {selectedBoard?.columns?.map((column) => (
               <Column
                 key={column._id}
                 name={column.name}
                 _id={column._id}
                 tasks={[]}
                 customClass={`column-dot`}
-                quantity={columns.length}
+                quantity={columns?.length}
               />
-            ))} */}
-        <div className='columns-container'>
+            ))}
+          </div>
+        </div>
+        {/* <div className='columns-container'>
           <div className='column'>
             <Column
               key={1}
@@ -241,7 +234,7 @@ const Board = () => {
           <div className='create-new-column'>
             <p>+ New Column</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   );

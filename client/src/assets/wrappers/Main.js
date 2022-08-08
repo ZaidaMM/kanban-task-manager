@@ -6,6 +6,7 @@ const Wrapper = styled.main`
     height: 100vh;
     width: 100vw;
     margin-left: 297px;
+    margin-top: 97px;
   }
 
   .expanded {

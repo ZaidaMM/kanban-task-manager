@@ -3,8 +3,9 @@ import styled from 'styled-components';
 const Wrapper = styled.nav`
   display: flex;
   z-index: 10;
-
+  background-color: var(--white);
   width: 100vw;
+  position: fixed;
 
   .nav-center {
     border-bottom: var(--border);

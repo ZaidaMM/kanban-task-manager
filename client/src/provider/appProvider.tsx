@@ -45,7 +45,7 @@ const AppProvider = (props: { children: ReactNode }) => {
       })
       .then((data) => {
         setBoards(data);
-        console.log(data);
+        // console.log(data);
       })
       .catch((error) => {
         console.log('error fetching data:', error);
@@ -59,7 +59,7 @@ const AppProvider = (props: { children: ReactNode }) => {
     getBoards();
     // eslint - disable - next - line;
   }, []);
-  console.log(boards);
+  // console.log(boards);
 
   const handleToggleTheme = () => {
     console.log('handleToggleTheme');
@@ -70,8 +70,8 @@ const AppProvider = (props: { children: ReactNode }) => {
     setShowSidebarToggler(!showSidebarToggler);
   };
 
-  console.log(selectedBoard);
-  console.log(selectedBoard?._id);
+  // console.log(selectedBoard);
+  // console.log(selectedBoard?._id);
 
   const getBoard = () => {
     fetch(API_URL + idUrl)
@@ -83,6 +83,7 @@ const AppProvider = (props: { children: ReactNode }) => {
       })
       .then((data) => {
         setSelectedBoard(data);
+        getColumns();
         console.log(data);
       })
       .catch((error) => {
@@ -92,15 +93,13 @@ const AppProvider = (props: { children: ReactNode }) => {
       .finally(() => {
         // setIsLoading(false);
       });
-    getBoard();
-    getColumns();
   };
 
-  // useEffect(() => {
-  //   getBoard();
-  //   // eslint - disable - next - line;
-  // }, []);
-  console.log(selectedBoard);
+  useEffect(() => {
+    getBoard();
+    // eslint - disable - next - line;
+  }, []);
+  // console.log(selectedBoard);
 
   const getColumns = () => {
     fetch(API_URL + idUrl + columnsUrl)
@@ -112,7 +111,7 @@ const AppProvider = (props: { children: ReactNode }) => {
       })
       .then((data) => {
         setColumns(data);
-        console.log(data);
+        console.log(columns);
       })
       .catch((error) => {
         console.log('error fetching data:', error);
@@ -123,7 +122,7 @@ const AppProvider = (props: { children: ReactNode }) => {
       });
   };
 
-  console.log(columns);
+  console.log(selectedBoard?.columns);
 
   useEffect(() => {
     getColumns();

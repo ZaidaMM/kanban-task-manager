@@ -9,11 +9,13 @@ const Wrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 42%;
+    height: 100%;
+    width: 100%;
   }
   .initial-message {
+    display: flex;
+
+    /* margin-left: 297px; */
     color: var(--grey-300);
     font-weight: 700;
     font-size: 18px;

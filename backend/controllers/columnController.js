@@ -48,8 +48,19 @@ const createColumn = asyncHandler(async (req, res) => {
 
   const column = await Column.create({
     name,
-    board: req.params.boardId,
+    board: board._id,
   });
+
+  await Board.findByIdAndUpdate(
+    board._id,
+    {
+      $push: { columns: column._id },
+    },
+    {
+      new: true,
+      useFindAndModify: false,
+    }
+  );
 
   res.status(200).json(column);
 });
