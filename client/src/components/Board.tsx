@@ -1,12 +1,6 @@
 import Wrapper from '../assets/wrappers/Board';
 import { useAppContext } from '../provider/appProvider';
 import Column from './Column';
-import { IBoardsData, IColumnsData } from '../interfaces/IBoardsData';
-import Button from './Button';
-// import { boards } from '../utils/boards';
-import InitialMessage from './InitialMessage';
-import Task from './Task';
-import { boards } from '../utils/boards';
 
 const Board = () => {
   const { columns, selectedBoard } = useAppContext();
@@ -15,17 +9,22 @@ const Board = () => {
     <Wrapper>
       <div className='board-container'>
         <div className='columns-container'>
-          <div className='column'>
-            {selectedBoard?.columns?.map((column) => (
-              <Column
-                key={column._id}
-                name={column.name}
-                _id={column._id}
-                tasks={[]}
-                customClass={`column-dot`}
-                quantity={columns?.length}
-              />
-            ))}
+          <div className='columns'>
+            <div className='single-column'>
+              {selectedBoard?.columns?.map((column) => (
+                <Column
+                  key={column._id}
+                  name={column.name}
+                  _id={column._id}
+                  tasks={[]}
+                  customClass={`${column.name}`}
+                  quantity={columns?.length}
+                />
+              ))}
+            </div>
+            <div className='create-new-column'>
+              <p>+ New Column</p>
+            </div>
           </div>
         </div>
         {/* <div className='columns-container'>
@@ -231,9 +230,7 @@ const Board = () => {
               />
             </div>
           </div>
-          <div className='create-new-column'>
-            <p>+ New Column</p>
-          </div>
+          
         </div> */}
       </div>
     </Wrapper>

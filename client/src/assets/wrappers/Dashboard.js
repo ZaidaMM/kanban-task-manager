@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
   .dashboard-container {
     margin-left: 297px;
+    display: flex;
   }
   .message-container {
     display: flex;

@@ -8,7 +8,7 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 1fr;
-    /* margin-left: 24px; */
+    margin-right: 24px;
     padding-bottom: 24px;
     width: 280px;
   }
@@ -19,21 +19,27 @@ const Wrapper = styled.section`
     text-align: center;
     flex-wrap: nowrap;
     padding-bottom: 24px;
-    /* margin-left: 24px; */
-    .column-dot {
+
+    .todo {
+      background-color: #49c4e5;
       height: 15px;
       width: 15px;
       border-radius: 50%;
       align-items: center;
     }
-    .column-dot.blue {
-      background-color: #49c4e5;
-    }
-    .column-dot.purple {
+    .doing {
       background-color: #8471f2;
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      align-items: center;
     }
-    .column-dot.green {
+    .done {
       background-color: #67e2ae;
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      align-items: center;
     }
     .column-title {
       text-transform: uppercase;

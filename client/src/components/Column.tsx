@@ -10,7 +10,7 @@ const Column = ({ customClass, name, quantity, _id }: IColumnsData) => {
     <Wrapper>
       <div className='column-container'>
         <div className='column-name'>
-          <span className={customClass}></span>
+          <span className={customClass?.toLowerCase()}></span>
           <p className='column-title' key={_id}>
             {name} (<span>{quantity}</span>)
           </p>

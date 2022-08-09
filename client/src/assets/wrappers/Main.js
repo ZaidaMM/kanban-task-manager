@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Wrapper = styled.main`
   .main {
     background-color: var(--grey-100);
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     margin-left: 297px;
     margin-top: 97px;

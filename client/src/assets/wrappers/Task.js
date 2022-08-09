@@ -6,7 +6,8 @@ const Wrapper = styled.section`
     border-radius: 8px;
     padding: 23px 16px;
     margin-bottom: 20px;
-    margin-right: 24px;
+    /* margin-right: 24px; */
+
     width: 280px;
   }
   p {
