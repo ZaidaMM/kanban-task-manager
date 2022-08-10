@@ -75,6 +75,13 @@ ul {
 .btn:hover {
   background: var(--primary-100);
 }
+.btn-light {
+  background: var(--primary-50);
+  color: var(--primary-200);
+}
+.btn-light:hover {
+  background: var(--white);
+}
 .btn-danger {
   background: var(--red-dark);
   color: var(--white);

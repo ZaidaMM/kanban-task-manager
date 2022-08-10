@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { ChangeEventHandler, createContext, FormEvent } from 'react';
 import { IBoardsData, IColumnsData,
   ITasksData,
   ISubtasksData, } from '../interfaces/IBoardsData';
@@ -22,6 +22,9 @@ export interface IAppContext {
   setShowBoardModal: (value:boolean) => void;
   showBoardModal: boolean;
   openBoardModal: () => void;
+  createBoard: () => void;
+  handleSubmit: (event:FormEvent<HTMLFormElement>) => void;
+  clearBoardForm:(event:FormEvent<HTMLFormElement>) => void
 }
 
 export const AppContext = createContext<IAppContext | undefined>(undefined);

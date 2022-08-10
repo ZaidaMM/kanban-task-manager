@@ -40,6 +40,9 @@ const Sidebar = () => {
           <ModalComponent
             showBoardModal={showBoardModal}
             setShowBoardModal={setShowBoardModal}
+            onClick={function (value: boolean): void {
+              throw new Error('Function not implemented.');
+            }}
           />
         </div>
         <div className='toggle-container'>

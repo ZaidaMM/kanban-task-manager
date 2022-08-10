@@ -1,7 +1,8 @@
 interface Props {
   children?: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   customClass?: string;
+  // type?: <HTMLButtonElement>
 }
 
 const Button = ({ children, onClick, customClass }: Props) => {
