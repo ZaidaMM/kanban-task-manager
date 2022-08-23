@@ -1,14 +1,18 @@
+import { Key } from "react";
+
 export interface IBoardsData {
+  _id: Key | null | undefined;
   name: string | undefined;
-  _id: string | number;
+  // _id: string | number;
   columns?:IColumnsData[];
   customClass?: string;
  
 }
 
 export interface IColumnsData {
+  _id: Key | null | undefined;
   name: string | undefined;
-  _id: string | number;
+  // _id: string | number;
   tasks?: ITasksData[];
   quantity? : number | string;
   customClass?: string;

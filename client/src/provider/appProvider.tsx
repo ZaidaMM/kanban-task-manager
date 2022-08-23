@@ -1,4 +1,11 @@
-import { ReactNode, useState, useEffect, useContext } from 'react';
+import {
+  ReactNode,
+  useState,
+  useEffect,
+  useContext,
+  ChangeEventHandler,
+  useRef,
+} from 'react';
 import {
   IBoardsData,
   IColumnsData,
@@ -7,6 +14,7 @@ import {
 } from '../interfaces/IBoardsData';
 import { AppContext } from './appContext';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function useAppContext() {
   const context = useContext(AppContext);
@@ -27,16 +35,26 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [error, setError] = useState('');
   const [showSidebar, setShowSidebar] = useState(true);
   const [showSidebarToggler, setShowSidebarToggler] = useState(true);
+  const [showBoardModal, setShowBoardModal] = useState(false);
 
   const params = useParams();
-  // const selectedBoardId = useParams();
+  const boardId = useParams();
 
   let API_URL = 'http://localhost:5000/api/boards?';
   const idUrl = selectedBoard?._id;
   const columnsUrl = selectedBoard?.columns;
 
+  useEffect(() => {
+    getBoards();
+    // getColumns();
+  }, []);
+
+  ////// GET BOARDS //////
+  const data = { name: board?.name, columns: board?.columns };
+  console.log(data);
+
   const getBoards = () => {
-    fetch(API_URL)
+    fetch('http://localhost:5000/api/boards')
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -59,20 +77,42 @@ const AppProvider = (props: { children: ReactNode }) => {
     getBoards();
     // eslint - disable - next - line;
   }, []);
-  console.log(boards);
+  // console.log(boards);
 
-  const handleToggleTheme = () => {
-    console.log('handleToggleTheme');
+  ////// CREATE BOARD /////
+
+  const createBoard = () => {
+    const data = { name: board?.name, columns: board?.columns };
+    console.log(data);
+
+    fetch('http://localhost:5000/api/boards', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then((data) => {
+        setBoard(data);
+        getColumns();
+        console.log('Success', data);
+      })
+      .catch((error) => {
+        console.log('error fetching data:', error);
+        // setError(error);
+      })
+      .finally(() => {
+        // setIsLoading(false);
+      });
   };
 
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-    setShowSidebarToggler(!showSidebarToggler);
-  };
-
-  console.log(selectedBoard);
-  console.log(selectedBoard?._id);
-
+  ////// GET SINGLE BOARD //////
   const getBoard = () => {
     fetch(API_URL + idUrl)
       .then((response) => {
@@ -83,6 +123,7 @@ const AppProvider = (props: { children: ReactNode }) => {
       })
       .then((data) => {
         setSelectedBoard(data);
+        getColumns();
         console.log(data);
       })
       .catch((error) => {
@@ -92,16 +133,15 @@ const AppProvider = (props: { children: ReactNode }) => {
       .finally(() => {
         // setIsLoading(false);
       });
-    getBoard();
-    getColumns();
   };
 
-  // useEffect(() => {
-  //   getBoard();
-  //   // eslint - disable - next - line;
-  // }, []);
-  console.log(selectedBoard);
+  useEffect(() => {
+    getBoard();
+    // eslint - disable - next - line;
+  }, []);
+  // console.log(selectedBoard);
 
+  ////// GET BOARD COLUMNS //////
   const getColumns = () => {
     fetch(API_URL + idUrl + columnsUrl)
       .then((response) => {
@@ -112,7 +152,7 @@ const AppProvider = (props: { children: ReactNode }) => {
       })
       .then((data) => {
         setColumns(data);
-        console.log(data);
+        console.log(columns);
       })
       .catch((error) => {
         console.log('error fetching data:', error);
@@ -123,7 +163,7 @@ const AppProvider = (props: { children: ReactNode }) => {
       });
   };
 
-  console.log(columns);
+  console.log(selectedBoard?.columns);
 
   useEffect(() => {
     getColumns();
@@ -131,6 +171,49 @@ const AppProvider = (props: { children: ReactNode }) => {
   }, []);
   console.log(columns);
 
+  ////// OPEN BOARD MODAL //////
+  const openBoardModal = () => {
+    setShowBoardModal((prevShowBoardModal) => !prevShowBoardModal);
+  };
+  let boardModalRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener('mousedown', (event) => {
+      if (!event.target) setShowBoardModal(!showBoardModal);
+    });
+  });
+
+  const handleToggleTheme = () => {
+    console.log('handleToggleTheme');
+  };
+
+  ////// TOGGLE SIDEBAR//////
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+    setShowSidebarToggler(!showSidebarToggler);
+  };
+
+  ////// SUBMIT BOARD FORM//////
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    createBoard();
+    // clearBoardForm(event);
+    console.log(board);
+  };
+
+  //// CLEAR BOARD FORM//////
+  const clearBoardForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log('Clear values');
+  };
+
+  ////// HANDLE CHANGE//////
+  const handleInputChange = (e: ChangeEventHandler) => {
+    console.log('Input changed');
+  };
+
+  ////// PROVIDER //////
   return (
     <AppContext.Provider
       value={{
@@ -146,7 +229,14 @@ const AppProvider = (props: { children: ReactNode }) => {
         showSidebarToggler,
         columns,
         column,
-        // selectedColumn
+        // selectedColumn,
+        showBoardModal,
+        setShowBoardModal,
+        openBoardModal,
+        createBoard,
+        handleSubmit,
+        // clearBoardForm,
+        // boardModalRef,
       }}
     >
       {props.children}

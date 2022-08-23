@@ -1,32 +1,56 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.main`
-  background-color: var(--grey-100);
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .show-icon-container {
-    background: var(--primary-200);
-    border-radius: 0 50px 50px 0;
-    width: 56px;
-    height: 48px;
-    transition: var(--transition);
-    position: absolute;
-    left: 0;
-    bottom: 32px;
-    cursor: pointer;
+const Wrapper = styled.section`
+  .dashboard-container {
+    margin-left: 297px;
+    display: flex;
   }
-  .hide-icon-container {
-    visibility: hidden;
+  .message-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
   }
-  .show-sidebar-icon {
-    cursor: pointer;
-    position: absolute;
-    left: 16px;
-    bottom: 18px;
+  .initial-message {
+    display: flex;
+
+    margin-left: 297px;
+    color: var(--grey-300);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 768px) {
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 22%;
+      margin-left: 0;
+    }
+    .initial-message {
+      text-align: center;
+      flex-wrap: wrap;
+      max-width: 343px;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 991px) {
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 48%;
+    }
+    .initial-message {
+      text-align: center;
+      flex-wrap: wrap;
+      max-width: 343px;
+    }
   }
 `;
+
 export default Wrapper;

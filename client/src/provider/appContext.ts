@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { ChangeEventHandler, createContext, FormEvent, HTMLAttributes, RefObject } from 'react';
 import { IBoardsData, IColumnsData,
   ITasksData,
   ISubtasksData, } from '../interfaces/IBoardsData';
@@ -19,8 +19,14 @@ export interface IAppContext {
   column: IColumnsData | undefined;
   // selectedColumn: IColumnsData | undefined;
   // setSelectedColumn: (column: IColumnsData | undefined) => void;
-
-  
+  setShowBoardModal: (value:boolean) => void;
+  showBoardModal: boolean;
+  openBoardModal: () => void;
+  // boardModalRef:React.useRef<HTMLButtonElement>(null);
+  createBoard: () => void;
+  handleSubmit: (event:FormEvent<HTMLFormElement>) => void;
+  // handleInputChange: (event:ChangeEventHandler<HTMLElement>) => void;
+  // clearBoardForm:(event:FormEvent<HTMLFormElement> | undefined) => void
 }
 
 export const AppContext = createContext<IAppContext | undefined>(undefined);

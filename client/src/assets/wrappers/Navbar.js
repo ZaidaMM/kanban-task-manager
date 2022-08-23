@@ -1,28 +1,36 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
-  z-index: 100;
-  height: 97px;
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  border-bottom: var(--border);
-  background: var(--white);
+  z-index: 10;
+  background-color: var(--white);
+  width: 100vw;
+  position: fixed;
+
   .nav-center {
+    border-bottom: var(--border);
+    width: 100vw;
+    height: 97px;
+    padding-right: 33px;
+    padding-left: 24px;
+    margin-left: 297px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  .expanded {
+    margin-left: 0;
+    z-index: 30;
+  }
+
   .nav-buttons {
     display: flex;
     align-items: center;
   }
-  @media (min-width: 992px) {
-    position: sticky;
-    top: 0;
+  @media (max-width: 768px) {
     .nav-center {
-      width: 80%;
-      margin-left: 32px;
+      margin-left: 0;
+      z-index: 30;
     }
   }
 `;

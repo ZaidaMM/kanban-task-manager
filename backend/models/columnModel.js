@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const columnSchema = mongoose.Schema(
   {
-    id: mongoose.Schema.Types.ObjectId,
     board: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Board',

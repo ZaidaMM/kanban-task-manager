@@ -1,4 +1,4 @@
-import Wrapper from '../assets/wrappers/TaskContainer';
+import Wrapper from '../assets/wrappers/Task';
 import { ITasksData } from '../interfaces/IBoardsData';
 import { useAppContext } from '../provider/appProvider';
 

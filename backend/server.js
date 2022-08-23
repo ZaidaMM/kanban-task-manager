@@ -30,6 +30,10 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to Kanban Task Manager' });
 });
 
+app.get('/cors', (req, res) => {
+  res.send('This has CORS enabled 🎈');
+});
+
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));

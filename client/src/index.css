@@ -37,7 +37,7 @@
   --borderRadius: 24px;
   --transition: 0.3s ease-in-out all;
   --letterSpacing: 1px;
-  --border: solid 2px var(--grey-200);
+  --border: solid 1px var(--grey-200);
 }
 
 body {
@@ -74,6 +74,14 @@ ul {
 }
 .btn:hover {
   background: var(--primary-100);
+}
+.btn-light {
+  background: var(--primary-50);
+  color: var(--primary-200);
+}
+.btn-light:hover {
+  background: var(--white);
+  border: 1px solid var(--primary-200);
 }
 .btn-danger {
   background: var(--red-dark);
@@ -112,4 +120,9 @@ ul {
 }
 .loading-center {
   margin: 0 auto;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
 }

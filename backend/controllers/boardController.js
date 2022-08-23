@@ -2,31 +2,48 @@ const asyncHandler = require('express-async-handler');
 
 const User = require('../models/userModel');
 const Board = require('../models/boardModel');
+const Column = require('../models/columnModel');
 
 // desc:   Get boards
 // route:  GET /api/boards
 // access: Public (Will be Private when adding user)
 const getBoards = asyncHandler(async (req, res) => {
-  const boards = await Board.find();
+  const boards = await Board.find().populate({
+    name: {
+      populate: {
+        name: 'name',
+        path: 'boards',
+        model: 'Column',
+      },
+    },
+    path: 'columns',
+  });
 
   res.status(200).json(boards);
+  console.log(boards.columns);
 });
 
 // desc:   Create board
 // route:  POST /api/boards
 // access: Public (Will be Private when adding user)
 const createBoard = asyncHandler(async (req, res) => {
-  const { name } = req.body;
+  const { name, columns } = req.body;
 
   if (!name) {
     res.status(400);
     throw new Error('Please add board name');
   }
 
-  const board = await Board.create({
-    name,
-    columns: [await Column.find()],
-  });
+  let payload = { name };
+  if (columns) {
+    payload.columns = columns.map((colName) => {
+      return new Column({
+        name: colName,
+      });
+    });
+  }
+
+  const board = await Board.create(payload);
   res.status(200).json(board);
 });
 
@@ -34,7 +51,10 @@ const createBoard = asyncHandler(async (req, res) => {
 // route:  GET /api/boards/:id
 // access: Public (Will be Private when adding user)
 const getBoard = asyncHandler(async (req, res) => {
-  const board = await Board.findById(req.params.id);
+  const board = await Board.findById(req.params.id).populate({
+    path: 'columns',
+    name: 'name',
+  });
 
   if (!board) {
     res.status(404);
@@ -42,6 +62,7 @@ const getBoard = asyncHandler(async (req, res) => {
   }
 
   res.status(200).json(board);
+  console.log(board.columns);
 });
 
 // desc:   Update board
