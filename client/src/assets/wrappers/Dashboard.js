@@ -16,7 +16,7 @@ const Wrapper = styled.section`
   .initial-message {
     display: flex;
 
-    /* margin-left: 297px; */
+    margin-left: 297px;
     color: var(--grey-300);
     font-weight: 700;
     font-size: 18px;

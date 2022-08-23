@@ -1,8 +1,9 @@
 import Wrapper from '../assets/wrappers/Modal';
 import { useAppContext } from '../provider/appProvider';
 import Button from './Button';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useState, useEffect } from 'react';
 import { ReactComponent as Icon } from '../assets/images/icon-cross.svg';
+import React from 'react';
 
 interface showBoardModalProps {
   setShowBoardModal: (value: boolean) => void;
@@ -11,18 +12,32 @@ interface showBoardModalProps {
 }
 
 const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
-  const { openBoardModal, createBoard, handleSubmit, board } = useAppContext();
+  const { openBoardModal, createBoard, handleSubmit, board, column, columns } =
+    useAppContext();
   const [inputValue, setInputValue] = useState('');
   const [name, setName] = useState('');
-  const [column, setColumn] = useState('');
+  // const [column, setColumn] = useState('');
 
+  const myRef = React.useRef<HTMLDivElement>(null);
   return (
     <Wrapper>
       <>
         {showBoardModal ? (
           <>
-            <div className='modal-wrapper'>
-              <form className='form' onClick={(event) => handleSubmit(event)}>
+            <div
+              ref={myRef}
+              className='modal-wrapper'
+              onClick={() => {
+                openBoardModal();
+              }}
+            >
+              <form
+                className='form'
+                onSubmit={(event) => handleSubmit(event)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
                 <h3 className='form-title'>
                   Add New Board
                   {/* {isEditing ? 'Edit Board' : 'Add New Board'} */}
@@ -38,13 +53,11 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                       className='form-control'
                       id='boardName'
                       name='boardName'
-                      value={name}
+                      value={board?.name}
                       placeholder='e.g. Web Design'
                       onChange={(event: { target: { value: string } }) => {
-                        void (
-                          // setName(event.target.value);
-                          console.log(name)
-                        );
+                        setName(event.target.value);
+                        console.log(event.target.value);
                       }}
                     />
                   </div>
@@ -65,7 +78,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                       onChange={(event: { target: { value: string } }) => {
                         void (
                           // setColumn(event.target.value);
-                          console.log(column)
+                          console.log('column')
                         );
                       }}
                     />
@@ -86,7 +99,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                     onChange={(event: { target: { value: string } }) => {
                       void (
                         // setColumn(event.target.value);
-                        console.log(column)
+                        console.log('column')
                       );
                     }}
                   />
@@ -105,9 +118,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                   <Button
                     children={'Create New Board'}
                     customClass='btn btn-modal'
-                    onClick={() => {
-                      return console.log(board);
-                    }}
+                    onClick={() => createBoard()}
                   />
                 </div>
               </form>
@@ -125,5 +136,11 @@ function handleChange(arg0: { name: any; value: any }) {
   throw new Error('Function not implemented.');
 }
 function setInputName(name: any) {
+  throw new Error('Function not implemented.');
+}
+function handleSubmit(name: any) {
+  throw new Error('Function not implemented.');
+}
+function setShowBoardModal(arg0: boolean) {
   throw new Error('Function not implemented.');
 }

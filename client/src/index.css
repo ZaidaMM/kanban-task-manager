@@ -81,6 +81,7 @@ ul {
 }
 .btn-light:hover {
   background: var(--white);
+  border: 1px solid var(--primary-200);
 }
 .btn-danger {
   background: var(--red-dark);

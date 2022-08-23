@@ -4,6 +4,7 @@ import {
   useEffect,
   useContext,
   ChangeEventHandler,
+  useRef,
 } from 'react';
 import {
   IBoardsData,
@@ -13,6 +14,7 @@ import {
 } from '../interfaces/IBoardsData';
 import { AppContext } from './appContext';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function useAppContext() {
   const context = useContext(AppContext);
@@ -36,17 +38,23 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [showBoardModal, setShowBoardModal] = useState(false);
 
   const params = useParams();
-  // const selectedBoardId = useParams();
+  const boardId = useParams();
 
   let API_URL = 'http://localhost:5000/api/boards?';
   const idUrl = selectedBoard?._id;
   const columnsUrl = selectedBoard?.columns;
 
+  useEffect(() => {
+    getBoards();
+    // getColumns();
+  }, []);
+
   ////// GET BOARDS //////
   const data = { name: board?.name, columns: board?.columns };
   console.log(data);
+
   const getBoards = () => {
-    fetch(API_URL)
+    fetch('http://localhost:5000/api/boards')
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -71,18 +79,18 @@ const AppProvider = (props: { children: ReactNode }) => {
   }, []);
   // console.log(boards);
 
-  ////// CREATE BOARD //////
+  ////// CREATE BOARD /////
 
   const createBoard = () => {
-    const data = { name: board?.name };
+    const data = { name: board?.name, columns: board?.columns };
     console.log(data);
 
-    fetch(API_URL, {
+    fetch('http://localhost:5000/api/boards', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: board?.name }),
+      body: JSON.stringify(data),
     })
       .then((response) => {
         if (response.ok) {
@@ -92,7 +100,7 @@ const AppProvider = (props: { children: ReactNode }) => {
       })
       .then((data) => {
         setBoard(data);
-        // getColumns();
+        getColumns();
         console.log('Success', data);
       })
       .catch((error) => {
@@ -167,6 +175,13 @@ const AppProvider = (props: { children: ReactNode }) => {
   const openBoardModal = () => {
     setShowBoardModal((prevShowBoardModal) => !prevShowBoardModal);
   };
+  let boardModalRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener('mousedown', (event) => {
+      if (!event.target) setShowBoardModal(!showBoardModal);
+    });
+  });
 
   const handleToggleTheme = () => {
     console.log('handleToggleTheme');
@@ -181,21 +196,22 @@ const AppProvider = (props: { children: ReactNode }) => {
   ////// SUBMIT BOARD FORM//////
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    createBoard();
 
+    createBoard();
+    // clearBoardForm(event);
     console.log(board);
   };
 
-  ////// CLEAR BOARD FORM//////
+  //// CLEAR BOARD FORM//////
   const clearBoardForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log('Clear values');
   };
 
   ////// HANDLE CHANGE//////
-  // const handleInputChange = (e: ChangeEventHandler) => {
-  //   console.log('Input changed');
-  // };
+  const handleInputChange = (e: ChangeEventHandler) => {
+    console.log('Input changed');
+  };
 
   ////// PROVIDER //////
   return (
@@ -219,7 +235,8 @@ const AppProvider = (props: { children: ReactNode }) => {
         openBoardModal,
         createBoard,
         handleSubmit,
-        clearBoardForm,
+        // clearBoardForm,
+        // boardModalRef,
       }}
     >
       {props.children}

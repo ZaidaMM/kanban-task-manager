@@ -1,6 +1,8 @@
 import Dashboard from '../components/Dashboard';
 import { useAppContext } from '../provider/appProvider';
 import { ReactComponent as ShowSidebar } from '../assets/images/icon-show-sidebar.svg';
+import Board from '../components/Board';
+import InitialMessage from '../components/InitialMessage';
 
 const LandingPage = () => {
   const { selectedBoard, showSidebarToggler, toggleSidebar } = useAppContext();
@@ -27,9 +29,7 @@ const LandingPage = () => {
           </>
         )}
       </div>
-      <div>
-        <Dashboard />
-      </div>
+      <div> {selectedBoard ? <Dashboard /> : <InitialMessage />}</div>
     </>
   );
 };

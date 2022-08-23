@@ -102,7 +102,9 @@ const Wrapper = styled.aside`
     cursor: pointer;
   }
   .show-sidebar-toggler {
+    position: sticky;
     left: 0;
+    bottom: 32px;
   }
   .hide-sidebar-icon {
     margin-right: 10px;
