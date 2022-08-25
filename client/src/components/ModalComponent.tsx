@@ -1,7 +1,7 @@
 import Wrapper from '../assets/wrappers/Modal';
 import { useAppContext } from '../provider/appProvider';
 import Button from './Button';
-import { MouseEvent, useState, useEffect } from 'react';
+import { MouseEvent, useState, useEffect, useRef } from 'react';
 import { ReactComponent as Icon } from '../assets/images/icon-cross.svg';
 import React from 'react';
 
@@ -9,23 +9,54 @@ interface showBoardModalProps {
   setShowBoardModal: (value: boolean) => void;
   showBoardModal: boolean;
   onClick: (value: boolean) => void;
+  // boardModalForm: any;
+  // boardNameEntered: any;
+  // boardNameEnteredRef?: any;
+  // boardColumnsEntered: any;
+  // boardColumnsEnteredRef?: any;
 }
 
 const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
-  const { openBoardModal, createBoard, handleSubmit, board, column, columns } =
+  const { openBoardModal, handleSubmit, board, column, columns, isEditing } =
     useAppContext();
+
   const [inputValue, setInputValue] = useState('');
   const [name, setName] = useState('');
   // const [column, setColumn] = useState('');
 
-  const myRef = React.useRef<HTMLDivElement>(null);
+  // const BoardModalForm = () => {
+  //   const boardNameEnteredRef = useRef();
+  //   const boardColumnsEnteredRef = useRef();
+
+  //   function submitHandler(event: { preventDefault: () => void }) {
+  //     event.preventDefault();
+
+  //     const boardNameEntered = boardNameEnteredRef.current.value;
+  //     const boardColumnsEntered = boardColumnsEnteredRef.current.value;
+
+  //     const boardData = {
+  //       name: boardNameEntered,
+  //       columns: boardColumnsEntered,
+  //     };
+  //   }
+  // };
+
+  // function createBoard(boardData) {
+  //   fetch('http://localhost:5000/api/boards', {
+  //     method: 'POST',
+  //     body: JSON.stringify(boardData),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  // }
+
   return (
     <Wrapper>
       <>
         {showBoardModal ? (
           <>
             <div
-              ref={myRef}
               className='modal-wrapper'
               onClick={() => {
                 openBoardModal();
@@ -39,13 +70,11 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                 }}
               >
                 <h3 className='form-title'>
-                  Add New Board
-                  {/* {isEditing ? 'Edit Board' : 'Add New Board'} */}
+                  {isEditing ? 'Edit Board' : 'Add New Board'}
                 </h3>
                 <div className='form-group'>
                   <label htmlFor='boardName' className='form-label'>
-                    Name
-                    {/* {isEditing ? 'Board Name' : 'Name'} */}
+                    {isEditing ? 'Board Name' : 'Name'}
                   </label>
                   <div className='form-input'>
                     <input
@@ -64,8 +93,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                 </div>
                 <div className='form-group'>
                   <label htmlFor='boardColumns' className='form-label'>
-                    Columns
-                    {/* {isEditing ? 'Board Columns' : 'Columns'} */}
+                    {isEditing ? 'Board Columns' : 'Columns'}
                   </label>
                   <div className='form-input'>
                     <input
@@ -116,7 +144,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                     }}
                   />
                   <Button
-                    children={'Create New Board'}
+                    children={isEditing ? 'Save Changes' : 'Create New Board'}
                     customClass='btn btn-modal'
                     onClick={() => createBoard()}
                   />
@@ -142,5 +170,8 @@ function handleSubmit(name: any) {
   throw new Error('Function not implemented.');
 }
 function setShowBoardModal(arg0: boolean) {
+  throw new Error('Function not implemented.');
+}
+function createBoard(): void {
   throw new Error('Function not implemented.');
 }

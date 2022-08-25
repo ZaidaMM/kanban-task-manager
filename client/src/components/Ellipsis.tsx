@@ -11,6 +11,5 @@ const EllipsisBtn = ({ onClick }: Props) => {
     </>
   );
 };
-interface Props {}
 
 export default EllipsisBtn;
