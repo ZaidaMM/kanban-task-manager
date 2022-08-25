@@ -22,10 +22,39 @@ const Wrapper = styled.nav`
     margin-left: 0;
     z-index: 30;
   }
-
   .nav-buttons {
     display: flex;
     align-items: center;
+  }
+  .dropdown {
+    width: 192px;
+    height: 94px;
+    border-radius: 8px;
+    position: absolute;
+    top: 90px;
+    right: 24px;
+    padding: 16px;
+    text-align: center;
+    visibility: hidden;
+    background-color: var(--white);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 23px;
+    cursor: pointer;
+  }
+  span.danger {
+    color: var(--red-dark);
+    padding-top: 16px;
+  }
+  span.grey {
+    color: var(--grey-300);
+  }
+  .show-dropdown {
+    visibility: visible;
   }
   @media (max-width: 768px) {
     .nav-center {

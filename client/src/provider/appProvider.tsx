@@ -36,6 +36,8 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showSidebarToggler, setShowSidebarToggler] = useState(true);
   const [showBoardModal, setShowBoardModal] = useState(false);
+  const [showEditBoard, setShowEditBoard] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const params = useParams();
   const boardId = useParams();
@@ -87,10 +89,10 @@ const AppProvider = (props: { children: ReactNode }) => {
 
     fetch('http://localhost:5000/api/boards', {
       method: 'POST',
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
     })
       .then((response) => {
         if (response.ok) {
@@ -175,6 +177,7 @@ const AppProvider = (props: { children: ReactNode }) => {
   const openBoardModal = () => {
     setShowBoardModal((prevShowBoardModal) => !prevShowBoardModal);
   };
+
   let boardModalRef = useRef();
 
   useEffect(() => {
@@ -213,6 +216,16 @@ const AppProvider = (props: { children: ReactNode }) => {
     console.log('Input changed');
   };
 
+  ////// SHOW EDIT BOARD DROPDOWN//////
+  const openShowEditBoard = () => {
+    setShowEditBoard((prevShowEditBoard) => !prevShowEditBoard);
+  };
+
+  ////// SHOW EDIT BOARD DROPDOWN//////
+  const openDropdown = () => {
+    setShowDropdown((prevShowDropdown) => !prevShowDropdown);
+  };
+
   ////// PROVIDER //////
   return (
     <AppContext.Provider
@@ -235,6 +248,12 @@ const AppProvider = (props: { children: ReactNode }) => {
         openBoardModal,
         createBoard,
         handleSubmit,
+        showEditBoard,
+        setShowEditBoard,
+        openShowEditBoard,
+        openDropdown,
+        showDropdown,
+        setShowDropdown,
         // clearBoardForm,
         // boardModalRef,
       }}

@@ -25,6 +25,12 @@ export interface IAppContext {
   // boardModalRef:React.useRef<HTMLButtonElement>(null);
   createBoard: () => void;
   handleSubmit: (event:FormEvent<HTMLFormElement>) => void;
+  setShowEditBoard: (value: boolean) => void;
+  showEditBoard: boolean;
+  openShowEditBoard: () => void;
+  openDropdown: () => void;
+  showDropdown:boolean;
+  setShowDropdown:(value: boolean) => void;
   // handleInputChange: (event:ChangeEventHandler<HTMLElement>) => void;
   // clearBoardForm:(event:FormEvent<HTMLFormElement> | undefined) => void
 }
