@@ -17,7 +17,7 @@ interface showBoardModalProps {
 }
 
 const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
-  const { openBoardModal, handleSubmit, board, column, columns } =
+  const { openBoardModal, handleSubmit, board, column, columns, isEditing } =
     useAppContext();
 
   const [inputValue, setInputValue] = useState('');
@@ -70,13 +70,11 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                 }}
               >
                 <h3 className='form-title'>
-                  Add New Board
-                  {/* {isEditing ? 'Edit Board' : 'Add New Board'} */}
+                  {isEditing ? 'Edit Board' : 'Add New Board'}
                 </h3>
                 <div className='form-group'>
                   <label htmlFor='boardName' className='form-label'>
-                    Name
-                    {/* {isEditing ? 'Board Name' : 'Name'} */}
+                    {isEditing ? 'Board Name' : 'Name'}
                   </label>
                   <div className='form-input'>
                     <input
@@ -95,8 +93,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                 </div>
                 <div className='form-group'>
                   <label htmlFor='boardColumns' className='form-label'>
-                    Columns
-                    {/* {isEditing ? 'Board Columns' : 'Columns'} */}
+                    {isEditing ? 'Board Columns' : 'Columns'}
                   </label>
                   <div className='form-input'>
                     <input
@@ -147,7 +144,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                     }}
                   />
                   <Button
-                    children={'Create New Board'}
+                    children={isEditing ? 'Save Changes' : 'Create New Board'}
                     customClass='btn btn-modal'
                     onClick={() => createBoard()}
                   />

@@ -14,6 +14,8 @@ const Navbar = () => {
     openShowEditBoard,
     showDropdown,
     openDropdown,
+    openBoardModal,
+    openEditBoardModal,
   } = useAppContext();
 
   return (
@@ -30,7 +32,9 @@ const Navbar = () => {
           />
           <Ellipsis onClick={() => openDropdown()} />
           <div className={showDropdown ? 'dropdown show-dropdown' : 'dropdown'}>
-            <span className='grey'>Edit Board</span>
+            <span className='grey' onClick={openEditBoardModal}>
+              Edit Board
+            </span>
             <span className='danger'>Delete Board</span>
           </div>
         </div>

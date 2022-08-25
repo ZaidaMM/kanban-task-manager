@@ -38,6 +38,7 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [showBoardModal, setShowBoardModal] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const params = useParams();
   const boardId = useParams();
@@ -189,6 +190,11 @@ const AppProvider = (props: { children: ReactNode }) => {
   const handleToggleTheme = () => {
     console.log('handleToggleTheme');
   };
+  ////// OPEN EDIT BOARD MODAL //////
+  const openEditBoardModal = () => {
+    openBoardModal();
+    setIsEditing((prevIsEditing) => !prevIsEditing);
+  };
 
   ////// TOGGLE SIDEBAR//////
   const toggleSidebar = () => {
@@ -246,6 +252,7 @@ const AppProvider = (props: { children: ReactNode }) => {
         showBoardModal,
         setShowBoardModal,
         openBoardModal,
+        openEditBoardModal,
         createBoard,
         handleSubmit,
         showEditBoard,
@@ -254,6 +261,8 @@ const AppProvider = (props: { children: ReactNode }) => {
         openDropdown,
         showDropdown,
         setShowDropdown,
+        isEditing,
+        setIsEditing,
         // clearBoardForm,
         // boardModalRef,
       }}
