@@ -11,7 +11,7 @@ interface showDeleteBoardModalProps {
 const DeleteModalComponent = ({
   showDeleteBoard,
 }: showDeleteBoardModalProps) => {
-  const { openDeleteBoardModal } = useAppContext();
+  const { openDeleteBoardModal, boards, selectedBoard } = useAppContext();
   return (
     <Wrapper>
       <>
@@ -21,9 +21,9 @@ const DeleteModalComponent = ({
               <div className='delete-modal'>
                 <h3 className='modal-title'>Delete this board?</h3>
                 <p>
-                  Are you sure you want to delete the ‘Platform Launch’ board?
-                  This action will remove all columns and tasks and cannot be
-                  reversed.
+                  Are you sure you want to delete the ‘{selectedBoard?.name}’
+                  board? This action will remove all columns and tasks and
+                  cannot be reversed.
                 </p>
                 <div className='buttons-containers-row'>
                   <Button
