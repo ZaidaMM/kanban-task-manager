@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Wrapper from '../assets/wrappers/Navbar';
 import { useAppContext } from '../provider/appProvider';
 import Button from './Button';
+import DeleteModalComponent from './DeleteModalComponent';
 import Ellipsis from './Ellipsis';
 
 const Navbar = () => {
@@ -16,6 +17,9 @@ const Navbar = () => {
     openDropdown,
     openBoardModal,
     openEditBoardModal,
+    openDeleteBoardModal,
+    showDeleteBoard,
+    setShowDeleteBoard,
   } = useAppContext();
 
   return (
@@ -35,7 +39,15 @@ const Navbar = () => {
             <span className='grey' onClick={openEditBoardModal}>
               Edit Board
             </span>
-            <span className='danger'>Delete Board</span>
+
+            <span className='danger' onClick={openDeleteBoardModal}>
+              Delete Board
+            </span>
+
+            <DeleteModalComponent
+              showDeleteBoard={showDeleteBoard}
+              setShowDeleteBoard={setShowDeleteBoard}
+            />
           </div>
         </div>
       </div>

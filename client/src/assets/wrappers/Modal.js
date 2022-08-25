@@ -31,6 +31,7 @@ const Wrapper = styled.div`
     font-size: 18px;
     /* margin-bottom: 24px; */
   }
+
   .form-group {
     margin-top: 24px;
   }
@@ -68,9 +69,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     margin-bottom: 8px;
     margin-top: 12px;
-  }
-  .btn-modal {
-    margin-bottom: 24px;
   }
 `;
 export default Wrapper;
