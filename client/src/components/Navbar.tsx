@@ -43,12 +43,11 @@ const Navbar = () => {
             <span className='danger' onClick={openDeleteBoardModal}>
               Delete Board
             </span>
-
-            <DeleteModalComponent
-              showDeleteBoard={showDeleteBoard}
-              setShowDeleteBoard={setShowDeleteBoard}
-            />
           </div>
+          <DeleteModalComponent
+            showDeleteBoard={showDeleteBoard}
+            setShowDeleteBoard={setShowDeleteBoard}
+          />
         </div>
       </div>
     </Wrapper>

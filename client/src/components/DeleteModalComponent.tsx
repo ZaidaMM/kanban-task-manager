@@ -11,14 +11,19 @@ interface showDeleteBoardModalProps {
 const DeleteModalComponent = ({
   showDeleteBoard,
 }: showDeleteBoardModalProps) => {
-  const { openDeleteBoardModal, boards, selectedBoard } = useAppContext();
+  const { openDeleteBoardModal, boards, selectedBoard, showSidebar } =
+    useAppContext();
   return (
     <Wrapper>
       <>
         {showDeleteBoard ? (
           <>
-            <div className='delete-modal-wrapper'>
-              <div className='delete-modal'>
+            <div className={showSidebar ? 'delete-wrapper' : 'delete-wrapper'}>
+              <div
+                className={
+                  showSidebar ? 'delete-modal' : 'delete-modal expanded'
+                }
+              >
                 <h3 className='modal-title'>Delete this board?</h3>
                 <p>
                   Are you sure you want to delete the ‘{selectedBoard?.name}’

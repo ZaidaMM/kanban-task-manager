@@ -26,6 +26,7 @@ const Wrapper = styled.nav`
     display: flex;
     align-items: center;
   }
+
   .dropdown {
     width: 192px;
     height: 94px;

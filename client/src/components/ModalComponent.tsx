@@ -17,8 +17,16 @@ interface showBoardModalProps {
 }
 
 const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
-  const { openBoardModal, handleSubmit, board, column, columns, isEditing } =
-    useAppContext();
+  const {
+    openBoardModal,
+    handleSubmit,
+    board,
+    column,
+    columns,
+    isEditing,
+    selectedBoard,
+    showSidebar,
+  } = useAppContext();
 
   const [inputValue, setInputValue] = useState('');
   const [name, setName] = useState('');
@@ -57,7 +65,9 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
         {showBoardModal ? (
           <>
             <div
-              className='modal-wrapper'
+              className={
+                showSidebar ? 'modal-wrapper' : 'modal-wrapper expanded'
+              }
               onClick={() => {
                 openBoardModal();
               }}

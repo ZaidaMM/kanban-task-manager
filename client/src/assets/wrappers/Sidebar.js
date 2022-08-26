@@ -5,7 +5,6 @@ const Wrapper = styled.aside`
     width: 297px;
     height: 100vh;
     z-index: 20;
-    /* padding-top: 34px; */
     border-right: var(--border);
     position: absolute;
     bottom: 0;
