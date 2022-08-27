@@ -4,7 +4,7 @@ const Wrapper = styled.aside`
   .sidebar-container {
     width: 297px;
     height: 100vh;
-    z-index: 20;
+    z-index: 1;
     border-right: var(--border);
     position: absolute;
     bottom: 0;
@@ -17,12 +17,16 @@ const Wrapper = styled.aside`
     position: fixed;
     background-color: var(--white);
   }
+  .content-index {
+    z-index: 0;
+  }
   .show-sidebar {
     margin-left: 0;
+    /* z-index: 0; */
   }
 
   .logo {
-    padding-top: 48px;
+    padding-top: 35px;
     padding-left: 34px;
     padding-bottom: 54px;
   }

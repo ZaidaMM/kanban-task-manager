@@ -4,6 +4,7 @@ const Wrapper = styled.section`
   .dashboard-container {
     margin-left: 297px;
     display: flex;
+    z-index: 100;
   }
   .message-container {
     display: flex;
@@ -11,16 +12,15 @@ const Wrapper = styled.section`
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 100%;
+    width: 100vw;
+    margin-left: -177px;
   }
   .initial-message {
-    display: flex;
-
-    margin-left: 297px;
     color: var(--grey-300);
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 32px;
+    margin-top: 177px;
   }
   @media (max-width: 768px) {
     .message-container {

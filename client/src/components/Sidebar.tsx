@@ -14,16 +14,17 @@ const Sidebar = () => {
     openBoardModal,
     showBoardModal,
     setShowBoardModal,
+    showDeleteBoard,
   } = useAppContext();
 
   return (
     <Wrapper>
       <div
         className={
-          showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container '
+          showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
         }
       >
-        <div className='content'>
+        <div className={showDeleteBoard ? 'content-index' : 'content'}>
           <header>
             <Logo />
           </header>

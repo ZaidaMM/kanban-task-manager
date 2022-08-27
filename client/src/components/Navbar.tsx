@@ -4,6 +4,7 @@ import { useAppContext } from '../provider/appProvider';
 import Button from './Button';
 import DeleteModalComponent from './DeleteModalComponent';
 import Ellipsis from './Ellipsis';
+import Logo from './Logo';
 
 const Navbar = () => {
   const {
@@ -24,7 +25,10 @@ const Navbar = () => {
 
   return (
     <Wrapper>
-      <div className={showSidebar ? 'nav-center' : 'nav-center expanded'}>
+      <div className='logo'>
+        <Logo />
+      </div>
+      <div className={showSidebar ? 'nav-center' : 'nav-center-expanded'}>
         <div className='nav-header'>
           <h1 className='nav-title '>{selectedBoard?.name}</h1>
         </div>
