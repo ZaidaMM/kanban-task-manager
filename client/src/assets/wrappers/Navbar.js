@@ -40,6 +40,7 @@ const Wrapper = styled.nav`
     justify-content: space-between;
     align-items: center;
     margin-left: 0;
+    z-index: 0;
   }
   .nav-buttons {
     display: flex;

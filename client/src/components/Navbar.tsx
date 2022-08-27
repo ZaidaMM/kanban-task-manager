@@ -42,11 +42,23 @@ const Navbar = () => {
           />
           <Ellipsis onClick={() => openDropdown()} />
           <div className={showDropdown ? 'dropdown show-dropdown' : 'dropdown'}>
-            <span className='grey' onClick={openEditBoardModal}>
+            <span
+              className='grey'
+              onClick={() => {
+                openEditBoardModal();
+                openDropdown();
+              }}
+            >
               Edit Board
             </span>
 
-            <span className='danger' onClick={openDeleteBoardModal}>
+            <span
+              className='danger'
+              onClick={() => {
+                openDeleteBoardModal();
+                openDropdown();
+              }}
+            >
               Delete Board
             </span>
           </div>

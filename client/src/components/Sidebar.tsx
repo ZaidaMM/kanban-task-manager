@@ -58,3 +58,6 @@ const Sidebar = () => {
   );
 };
 export default Sidebar;
+function openDropdown() {
+  throw new Error('Function not implemented.');
+}
