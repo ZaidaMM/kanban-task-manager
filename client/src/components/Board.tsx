@@ -6,8 +6,6 @@ import InitialMessage from './InitialMessage';
 const Board = () => {
   const { columns, selectedBoard } = useAppContext();
 
-  const message = () => {};
-
   return (
     <Wrapper>
       <div className='board-container'>
