@@ -35,6 +35,10 @@ const Wrapper = styled.div`
   .form-group {
     margin-top: 24px;
   }
+  .form-input-edit {
+    display: flex;
+    flex-direction: column;
+  }
   .form-label {
     font-size: 12px;
     font-weight: 700;

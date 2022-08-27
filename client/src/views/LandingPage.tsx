@@ -29,7 +29,10 @@ const LandingPage = () => {
           </>
         )}
       </div>
-      <div> {selectedBoard ? <Dashboard /> : <InitialMessage />}</div>
+      <div>
+        {' '}
+        <Dashboard />
+      </div>
     </>
   );
 };

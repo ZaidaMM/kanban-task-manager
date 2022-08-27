@@ -107,25 +107,55 @@ const EditModalComponent = ({ showBoardModal }: showEditBoardProps) => {
                   <label htmlFor='boardColumns' className='form-label'>
                     Board Columns
                   </label>
-                  <div className='form-input'>
-                    <input
-                      type='text'
-                      className='form-control'
-                      id='boardColumn'
-                      name='boardColumn'
-                      value={column?.name}
-                      placeholder='e.g. Todo'
-                      onChange={(event: { target: { value: string } }) => {
-                        void (
-                          // setColumn(event.target.value);
-                          console.log('column')
-                        );
-                      }}
-                    />
-                    <span className='form-icon'>
-                      <Icon />
-                    </span>
-                  </div>
+                  {selectedBoard?.columns ? (
+                    <>
+                      {selectedBoard?.columns?.map((column) => (
+                        <div className='form-input'>
+                          <input
+                            type='text'
+                            className='form-control'
+                            id='boardColumn'
+                            name='boardColumn'
+                            value={column?.name}
+                            placeholder='e.g. Todo'
+                            onChange={(event: {
+                              target: { value: string };
+                            }) => {
+                              void (
+                                // setColumn(event.target.value);
+                                console.log('column')
+                              );
+                            }}
+                          />
+                          <span className='form-icon'>
+                            <Icon />
+                          </span>
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      <div className='form-input'>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='boardColumn'
+                          name='boardColumn'
+                          value='Todo'
+                          placeholder='e.g. Todo'
+                          onChange={(event: { target: { value: string } }) => {
+                            void (
+                              // setColumn(event.target.value);
+                              console.log('column')
+                            );
+                          }}
+                        />
+                        <span className='form-icon'>
+                          <Icon />
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <div className='buttons-container'>
