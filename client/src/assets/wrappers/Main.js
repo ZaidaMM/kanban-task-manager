@@ -4,6 +4,7 @@ const Wrapper = styled.main`
   .main {
     background-color: var(--grey-100);
     height: 100%;
+    min-height: 100vh;
     width: 100vw;
     margin-left: 297px;
     margin-top: 97px;
@@ -11,7 +12,7 @@ const Wrapper = styled.main`
 
   .expanded {
     margin-left: 0;
-    z-index: 30;
+    /* z-index: 30; */
   }
 
   .show-icon-container {

@@ -2,7 +2,9 @@ import { useState } from 'react';
 import Wrapper from '../assets/wrappers/Navbar';
 import { useAppContext } from '../provider/appProvider';
 import Button from './Button';
+import DeleteModalComponent from './DeleteModalComponent';
 import Ellipsis from './Ellipsis';
+import Logo from './Logo';
 
 const Navbar = () => {
   const {
@@ -16,11 +18,17 @@ const Navbar = () => {
     openDropdown,
     openBoardModal,
     openEditBoardModal,
+    openDeleteBoardModal,
+    showDeleteBoard,
+    setShowDeleteBoard,
   } = useAppContext();
 
   return (
     <Wrapper>
-      <div className={showSidebar ? 'nav-center' : 'nav-center expanded'}>
+      <div className='logo'>
+        <Logo />
+      </div>
+      <div className={showSidebar ? 'nav-center' : 'nav-center-expanded'}>
         <div className='nav-header'>
           <h1 className='nav-title '>{selectedBoard?.name}</h1>
         </div>
@@ -35,8 +43,15 @@ const Navbar = () => {
             <span className='grey' onClick={openEditBoardModal}>
               Edit Board
             </span>
-            <span className='danger'>Delete Board</span>
+
+            <span className='danger' onClick={openDeleteBoardModal}>
+              Delete Board
+            </span>
           </div>
+          <DeleteModalComponent
+            showDeleteBoard={showDeleteBoard}
+            setShowDeleteBoard={setShowDeleteBoard}
+          />
         </div>
       </div>
     </Wrapper>

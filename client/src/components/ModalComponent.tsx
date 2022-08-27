@@ -17,8 +17,16 @@ interface showBoardModalProps {
 }
 
 const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
-  const { openBoardModal, handleSubmit, board, column, columns, isEditing } =
-    useAppContext();
+  const {
+    openBoardModal,
+    handleSubmit,
+    board,
+    column,
+    columns,
+    isEditing,
+    selectedBoard,
+    showSidebar,
+  } = useAppContext();
 
   const [inputValue, setInputValue] = useState('');
   const [name, setName] = useState('');
@@ -57,7 +65,9 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
         {showBoardModal ? (
           <>
             <div
-              className='modal-wrapper'
+              className={
+                showSidebar ? 'modal-wrapper' : 'modal-wrapper expanded'
+              }
               onClick={() => {
                 openBoardModal();
               }}
@@ -77,18 +87,33 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                     {isEditing ? 'Board Name' : 'Name'}
                   </label>
                   <div className='form-input'>
-                    <input
-                      type='text'
-                      className='form-control'
-                      id='boardName'
-                      name='boardName'
-                      value={board?.name}
-                      placeholder='e.g. Web Design'
-                      onChange={(event: { target: { value: string } }) => {
-                        setName(event.target.value);
-                        console.log(event.target.value);
-                      }}
-                    />
+                    {isEditing ? (
+                      <input
+                        type='text'
+                        className='form-control'
+                        id='boardName'
+                        name='boardName'
+                        value={selectedBoard?.name}
+                        placeholder={selectedBoard?.name}
+                        onChange={(event: { target: { value: string } }) => {
+                          setName(event.target.value);
+                          console.log(event.target.value);
+                        }}
+                      />
+                    ) : (
+                      <input
+                        type='text'
+                        className='form-control'
+                        id='boardName'
+                        name='boardName'
+                        value={board?.name}
+                        placeholder='e.g. Web Design'
+                        onChange={(event: { target: { value: string } }) => {
+                          setName(event.target.value);
+                          console.log(event.target.value);
+                        }}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className='form-group'>
@@ -101,8 +126,8 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                       className='form-control'
                       id='boardColumn'
                       name='boardColumn'
-                      value='Todo'
-                      placeholder='e.g. Web Design'
+                      value={column?.name}
+                      placeholder='e.g. Todo'
                       onChange={(event: { target: { value: string } }) => {
                         void (
                           // setColumn(event.target.value);
@@ -116,14 +141,13 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                   </div>
                 </div>
 
-                <div className='form-input'>
+                {/* <div className='form-input'>
                   <input
                     type='text'
                     className='form-control'
                     id='boardColumn'
                     name='boardColumn'
                     value='Doing'
-                    placeholder='e.g. Web Design'
                     onChange={(event: { target: { value: string } }) => {
                       void (
                         // setColumn(event.target.value);
@@ -134,7 +158,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                   <span className='form-icon'>
                     <Icon />
                   </span>
-                </div>
+                </div> */}
                 <div className='buttons-container'>
                   <Button
                     children={'+ Add New Column'}

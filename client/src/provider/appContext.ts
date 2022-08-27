@@ -23,11 +23,14 @@ export interface IAppContext {
   showBoardModal: boolean;
   openBoardModal: () => void;
   openEditBoardModal: () => void;
+  openDeleteBoardModal: () => void;
   // boardModalRef:React.useRef<HTMLButtonElement>(null);
   createBoard: () => void;
   handleSubmit: (event:FormEvent<HTMLFormElement>) => void;
   setShowEditBoard: (value: boolean) => void;
   showEditBoard: boolean;
+  setShowDeleteBoard: (value: boolean) => void;
+  showDeleteBoard: boolean;
   openShowEditBoard: () => void;
   openDropdown: () => void;
   showDropdown:boolean;

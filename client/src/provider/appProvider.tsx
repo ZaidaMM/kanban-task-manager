@@ -37,6 +37,7 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [showSidebarToggler, setShowSidebarToggler] = useState(true);
   const [showBoardModal, setShowBoardModal] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
+  const [showDeleteBoard, setShowDeleteBoard] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -190,10 +191,16 @@ const AppProvider = (props: { children: ReactNode }) => {
   const handleToggleTheme = () => {
     console.log('handleToggleTheme');
   };
+
   ////// OPEN EDIT BOARD MODAL //////
   const openEditBoardModal = () => {
     openBoardModal();
     setIsEditing((prevIsEditing) => !prevIsEditing);
+  };
+
+  ////// OPEN DELETE BOARD MODAL //////
+  const openDeleteBoardModal = () => {
+    setShowDeleteBoard((prevShowDeleteBoard) => !prevShowDeleteBoard);
   };
 
   ////// TOGGLE SIDEBAR//////
@@ -253,10 +260,13 @@ const AppProvider = (props: { children: ReactNode }) => {
         setShowBoardModal,
         openBoardModal,
         openEditBoardModal,
+        openDeleteBoardModal,
         createBoard,
         handleSubmit,
         showEditBoard,
         setShowEditBoard,
+        showDeleteBoard,
+        setShowDeleteBoard,
         openShowEditBoard,
         openDropdown,
         showDropdown,

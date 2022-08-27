@@ -5,13 +5,14 @@ const Wrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    /* margin-bottom: 297px; */
     z-index: 100;
     height: 100vh;
     width: 100vw;
     background-color: rgb(0, 0, 0, 0.5);
   }
-
+  .expanded {
+    margin-left: 645px;
+  }
   .form {
     position: absolute;
     top: 50%;
@@ -29,8 +30,8 @@ const Wrapper = styled.div`
   }
   .form-title {
     font-size: 18px;
-    /* margin-bottom: 24px; */
   }
+
   .form-group {
     margin-top: 24px;
   }
@@ -47,7 +48,6 @@ const Wrapper = styled.div`
   }
   .form-control {
     display: block;
-    /* flex-direction: row; */
     align-items: left;
     font-size: 13px;
     padding-top: 9px;
@@ -69,7 +69,7 @@ const Wrapper = styled.div`
     margin-bottom: 8px;
     margin-top: 12px;
   }
-  .btn-modal {
+  .btn-light {
     margin-bottom: 24px;
   }
 `;
