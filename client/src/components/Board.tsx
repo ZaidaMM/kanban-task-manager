@@ -6,12 +6,14 @@ import InitialMessage from './InitialMessage';
 const Board = () => {
   const { columns, selectedBoard } = useAppContext();
 
+  const message = () => {};
+
   return (
     <Wrapper>
       <div className='board-container'>
         <div className='columns-container'>
           <div className='columns'>
-            {selectedBoard ? (
+            {selectedBoard?.columns ? (
               <>
                 <div className='single-column'>
                   {selectedBoard?.columns?.map((column) => (

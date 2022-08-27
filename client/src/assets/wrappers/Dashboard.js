@@ -15,6 +15,15 @@ const Wrapper = styled.section`
     width: 100vw;
     margin-left: -177px;
   }
+  .message-container-expanded {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100vw;
+    margin-left: 0;
+  }
   .initial-message {
     color: var(--grey-300);
     font-weight: 700;
