@@ -26,7 +26,7 @@ const Wrapper = styled.aside`
   }
 
   .logo {
-    padding-top: 35px;
+    padding-top: 55px;
     padding-left: 34px;
     padding-bottom: 54px;
   }
