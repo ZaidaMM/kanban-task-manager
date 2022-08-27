@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     background-color: rgb(0, 0, 0, 0.5);
   }
   .expanded {
-    margin-left: 645px;
+    /* margin-left: 645px; */
   }
   .form {
     position: absolute;

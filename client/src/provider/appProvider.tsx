@@ -194,7 +194,7 @@ const AppProvider = (props: { children: ReactNode }) => {
 
   ////// OPEN EDIT BOARD MODAL //////
   const openEditBoardModal = () => {
-    openBoardModal();
+    openShowEditBoard();
     setIsEditing((prevIsEditing) => !prevIsEditing);
   };
 
@@ -234,7 +234,7 @@ const AppProvider = (props: { children: ReactNode }) => {
     setShowEditBoard((prevShowEditBoard) => !prevShowEditBoard);
   };
 
-  ////// SHOW EDIT BOARD DROPDOWN//////
+  ////// OPEN DROPDOWN//////
   const openDropdown = () => {
     setShowDropdown((prevShowDropdown) => !prevShowDropdown);
   };

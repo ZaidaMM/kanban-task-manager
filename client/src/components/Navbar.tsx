@@ -3,8 +3,10 @@ import Wrapper from '../assets/wrappers/Navbar';
 import { useAppContext } from '../provider/appProvider';
 import Button from './Button';
 import DeleteModalComponent from './DeleteModalComponent';
+import EditModalComponent from './EditModalComponent';
 import Ellipsis from './Ellipsis';
 import Logo from './Logo';
+import ModalComponent from './ModalComponent';
 
 const Navbar = () => {
   const {
@@ -48,6 +50,10 @@ const Navbar = () => {
               Delete Board
             </span>
           </div>
+          <EditModalComponent
+            showEditBoard={showEditBoard}
+            setShowEditBoard={setShowEditBoard}
+          />
           <DeleteModalComponent
             showDeleteBoard={showDeleteBoard}
             setShowDeleteBoard={setShowDeleteBoard}
