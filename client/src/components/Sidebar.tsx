@@ -15,6 +15,9 @@ const Sidebar = () => {
     showBoardModal,
     setShowBoardModal,
     showDeleteBoard,
+    openEditBoardModal,
+    showEditBoard,
+    setShowEditBoard,
   } = useAppContext();
 
   return (
@@ -41,9 +44,9 @@ const Sidebar = () => {
           <ModalComponent
             showBoardModal={showBoardModal}
             setShowBoardModal={setShowBoardModal}
-            onClick={function (value: boolean): void {
-              throw new Error('Function not implemented.');
-            }}
+            // onClick={function (value: boolean): void {
+            //   throw new Error('Function not implemented.');
+            // }}
           />
         </div>
         <div className='toggle-container'>
@@ -55,3 +58,6 @@ const Sidebar = () => {
   );
 };
 export default Sidebar;
+function openDropdown() {
+  throw new Error('Function not implemented.');
+}

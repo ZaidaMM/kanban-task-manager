@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     background-color: rgb(0, 0, 0, 0.5);
   }
   .expanded {
-    margin-left: 645px;
+    /* margin-left: 645px; */
   }
   .form {
     position: absolute;
@@ -34,6 +34,10 @@ const Wrapper = styled.div`
 
   .form-group {
     margin-top: 24px;
+  }
+  .form-input-edit {
+    display: flex;
+    flex-direction: column;
   }
   .form-label {
     font-size: 12px;

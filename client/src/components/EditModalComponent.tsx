@@ -5,7 +5,7 @@ import { MouseEvent, useState, useEffect, useRef } from 'react';
 import { ReactComponent as Icon } from '../assets/images/icon-cross.svg';
 import React from 'react';
 
-interface showBoardModalProps {
+interface showEditBoardProps {
   setShowBoardModal?: (value: boolean) => void;
   showBoardModal?: boolean;
   showEditBoard?: boolean;
@@ -18,7 +18,7 @@ interface showBoardModalProps {
   // boardColumnsEnteredRef?: any;
 }
 
-const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
+const EditModalComponent = ({ showBoardModal }: showEditBoardProps) => {
   const {
     openBoardModal,
     handleSubmit,
@@ -66,14 +66,14 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
   return (
     <Wrapper>
       <>
-        {showBoardModal ? (
+        {showEditBoard ? (
           <>
             <div
               className={
                 showSidebar ? 'modal-wrapper' : 'modal-wrapper expanded'
               }
               onClick={() => {
-                openBoardModal();
+                openEditBoardModal();
               }}
             >
               <form
@@ -83,64 +83,79 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                   e.stopPropagation();
                 }}
               >
-                <h3 className='form-title'>Add New Board</h3>
+                <h3 className='form-title'>Edit Board</h3>
                 <div className='form-group'>
                   <label htmlFor='boardName' className='form-label'>
-                    Name
-                  </label>
-                  <div className='form-input'>
-                    {isEditing ? (
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='boardName'
-                        name='boardName'
-                        value={selectedBoard?.name}
-                        placeholder={selectedBoard?.name}
-                        onChange={(event: { target: { value: string } }) => {
-                          setName(event.target.value);
-                          console.log(event.target.value);
-                        }}
-                      />
-                    ) : (
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='boardName'
-                        name='boardName'
-                        value={board?.name}
-                        placeholder='e.g. Web Design'
-                        onChange={(event: { target: { value: string } }) => {
-                          setName(event.target.value);
-                          console.log(event.target.value);
-                        }}
-                      />
-                    )}
-                  </div>
-                </div>
-                <div className='form-group'>
-                  <label htmlFor='boardColumns' className='form-label'>
-                    Columns
+                    Board Name
                   </label>
                   <div className='form-input'>
                     <input
                       type='text'
                       className='form-control'
-                      id='boardColumn'
-                      name='boardColumn'
-                      value={column?.name}
-                      placeholder='e.g. Todo'
+                      id='boardName'
+                      name='boardName'
+                      value={selectedBoard?.name}
+                      placeholder={selectedBoard?.name}
                       onChange={(event: { target: { value: string } }) => {
-                        void (
-                          // setColumn(event.target.value);
-                          console.log('column')
-                        );
+                        setName(event.target.value);
+                        console.log(event.target.value);
                       }}
                     />
-                    <span className='form-icon'>
-                      <Icon />
-                    </span>
                   </div>
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='boardColumns' className='form-label'>
+                    Board Columns
+                  </label>
+                  {selectedBoard?.columns ? (
+                    <>
+                      {selectedBoard?.columns?.map((column) => (
+                        <div className='form-input'>
+                          <input
+                            type='text'
+                            className='form-control'
+                            id='boardColumn'
+                            name='boardColumn'
+                            value={column?.name}
+                            placeholder='e.g. Todo'
+                            onChange={(event: {
+                              target: { value: string };
+                            }) => {
+                              void (
+                                // setColumn(event.target.value);
+                                console.log('column')
+                              );
+                            }}
+                          />
+                          <span className='form-icon'>
+                            <Icon />
+                          </span>
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      <div className='form-input'>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='boardColumn'
+                          name='boardColumn'
+                          value='Todo'
+                          placeholder='e.g. Todo'
+                          onChange={(event: { target: { value: string } }) => {
+                            void (
+                              // setColumn(event.target.value);
+                              console.log('column')
+                            );
+                          }}
+                        />
+                        <span className='form-icon'>
+                          <Icon />
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <div className='buttons-container'>
@@ -152,7 +167,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
                     }}
                   />
                   <Button
-                    children={'Create New Board'}
+                    children={'Save Changes'}
                     customClass='btn btn-modal'
                     onClick={() => createBoard()}
                   />
@@ -167,7 +182,7 @@ const ModalComponent = ({ showBoardModal }: showBoardModalProps) => {
     </Wrapper>
   );
 };
-export default ModalComponent;
+export default EditModalComponent;
 function handleChange(arg0: { name: any; value: any }) {
   throw new Error('Function not implemented.');
 }
@@ -181,5 +196,8 @@ function setShowBoardModal(arg0: boolean) {
   throw new Error('Function not implemented.');
 }
 function createBoard(): void {
+  throw new Error('Function not implemented.');
+}
+function openShowEditBoard() {
   throw new Error('Function not implemented.');
 }

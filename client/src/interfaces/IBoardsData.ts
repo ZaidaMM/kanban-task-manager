@@ -11,7 +11,7 @@ export interface IBoardsData {
 
 export interface IColumnsData {
   _id: Key | null | undefined;
-  name: string | undefined;
+  name?: string | undefined;
   // _id: string | number;
   tasks?: ITasksData[];
   quantity? : number | string;
