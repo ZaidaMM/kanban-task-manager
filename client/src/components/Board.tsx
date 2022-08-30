@@ -11,7 +11,11 @@ const Board = () => {
   console.log(col);
   if (col?.length == 0) {
     console.log(columns);
-    return <InitialMessage />;
+    return (
+      <Wrapper>
+        <InitialMessage />
+      </Wrapper>
+    );
   }
   if (!selectedBoard) {
     return (
