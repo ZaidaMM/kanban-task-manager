@@ -32,6 +32,9 @@ export interface IAppContext {
   setShowDeleteBoard: (value: boolean) => void;
   showDeleteBoard: boolean;
   openShowEditBoard: () => void;
+  setShowTaskModal: (value:boolean) => void;
+  showTaskModal: boolean;
+  openTaskModal: () => void;
   openDropdown: () => void;
   showDropdown:boolean;
   setShowDropdown:(value: boolean) => void;
