@@ -13,7 +13,8 @@ const Wrapper = styled.section`
     align-items: center;
     height: 100%;
     width: 100vw;
-    margin-left: -177px;
+    margin-top: 97px;
+    margin-left: -474px;
   }
   .message-container-expanded {
     display: flex;
@@ -22,14 +23,15 @@ const Wrapper = styled.section`
     align-items: center;
     height: 100%;
     width: 100vw;
-    margin-left: 0;
+    margin-top: 97px;
+    margin-left: -297px;
   }
   .initial-message {
     color: var(--grey-300);
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 32px;
-    margin-top: 177px;
+    margin-top: 97px;
   }
   @media (max-width: 768px) {
     .message-container {
