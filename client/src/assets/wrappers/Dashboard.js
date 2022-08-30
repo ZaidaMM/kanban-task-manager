@@ -31,7 +31,7 @@ const Wrapper = styled.section`
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 32px;
-    margin-top: 177px;
+    margin-top: 97px;
   }
   @media (max-width: 768px) {
     .message-container {

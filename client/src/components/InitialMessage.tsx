@@ -3,6 +3,7 @@ import Button from './Button';
 
 const InitialMessage = () => {
   const { showSidebar } = useAppContext();
+
   return (
     <div
       className={

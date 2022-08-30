@@ -4,9 +4,9 @@ import Column from './Column';
 import InitialMessage from './InitialMessage';
 
 const Board = () => {
-  const { column, columns, selectedBoard } = useAppContext();
+  const { board, boards, column, columns, selectedBoard, setSelectedBoard } =
+    useAppContext();
 
-  const columnsArr = [];
   const col = selectedBoard?.columns;
   console.log(col);
   if (col?.length == 0) {
@@ -17,6 +17,7 @@ const Board = () => {
       </Wrapper>
     );
   }
+
   if (!selectedBoard) {
     return (
       <Wrapper>
@@ -41,9 +42,9 @@ const Board = () => {
                   quantity={columns?.length}
                 />
               ))}
-            </div>
-            <div className='create-new-column'>
-              <p>+ New Column</p>
+              <div className='create-new-column'>
+                <p>+ New Column</p>
+              </div>
             </div>
           </div>
         </div>
