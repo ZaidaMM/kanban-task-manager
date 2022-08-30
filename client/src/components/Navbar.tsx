@@ -28,6 +28,9 @@ const Navbar = () => {
     setShowTaskModal,
   } = useAppContext();
 
+  const col = selectedBoard?.columns;
+  console.log(col);
+
   return (
     <Wrapper>
       <div className='logo'>
@@ -41,7 +44,13 @@ const Navbar = () => {
           <Button
             children={'+ Add New Task'}
             onClick={() => openTaskModal()}
-            customClass='btn'
+            customClass={
+              col?.length == 0 || !selectedBoard ? 'btn btn-disabled' : 'btn'
+            }
+          />
+          <TaskModalComponent
+            showTaskModal={showTaskModal}
+            setShowTaskModal={setShowTaskModal}
           />
           <Ellipsis onClick={() => openDropdown()} />
           <div className={showDropdown ? 'dropdown show-dropdown' : 'dropdown'}>
@@ -65,10 +74,7 @@ const Navbar = () => {
               Delete Board
             </span>
           </div>
-          <TaskModalComponent
-            showTaskModal={showTaskModal}
-            setShowTaskModal={setShowTaskModal}
-          />
+
           <EditModalComponent
             showEditBoard={showEditBoard}
             setShowEditBoard={setShowEditBoard}
