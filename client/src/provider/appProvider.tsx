@@ -38,6 +38,7 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [showBoardModal, setShowBoardModal] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [showDeleteBoard, setShowDeleteBoard] = useState(false);
+  const [showTaskModal, setShowTaskModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -204,6 +205,19 @@ const AppProvider = (props: { children: ReactNode }) => {
     setShowDeleteBoard((prevShowDeleteBoard) => !prevShowDeleteBoard);
   };
 
+  ////// OPEN TASK MODAL //////
+  const openTaskModal = () => {
+    setShowTaskModal((prevShowTaskModal) => !prevShowTaskModal);
+  };
+
+  let taskModalRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener('mousedown', (event) => {
+      if (!event.target) setShowTaskModal(!showTaskModal);
+    });
+  });
+
   ////// TOGGLE SIDEBAR//////
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -269,6 +283,9 @@ const AppProvider = (props: { children: ReactNode }) => {
         showDeleteBoard,
         setShowDeleteBoard,
         openShowEditBoard,
+        setShowTaskModal,
+        showTaskModal,
+        openTaskModal,
         openDropdown,
         showDropdown,
         setShowDropdown,

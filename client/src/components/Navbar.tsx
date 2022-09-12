@@ -6,7 +6,7 @@ import DeleteModalComponent from './DeleteModalComponent';
 import EditModalComponent from './EditModalComponent';
 import Ellipsis from './Ellipsis';
 import Logo from './Logo';
-import ModalComponent from './ModalComponent';
+import TaskModalComponent from './TaskModalComponent';
 
 const Navbar = () => {
   const {
@@ -23,7 +23,13 @@ const Navbar = () => {
     openDeleteBoardModal,
     showDeleteBoard,
     setShowDeleteBoard,
+    openTaskModal,
+    showTaskModal,
+    setShowTaskModal,
   } = useAppContext();
+
+  const col = selectedBoard?.columns;
+  console.log(col);
 
   return (
     <Wrapper>
@@ -37,8 +43,15 @@ const Navbar = () => {
         <div className='nav-buttons '>
           <Button
             children={'+ Add New Task'}
-            onClick={() => console.log('button clicked')}
-            customClass='btn'
+            onClick={() => openTaskModal()}
+            customClass={
+              col?.length == 0 || !selectedBoard ? 'btn btn-disabled' : 'btn'
+            }
+            disabled={col?.length == 0 || !selectedBoard ? true : false}
+          />
+          <TaskModalComponent
+            showTaskModal={showTaskModal}
+            setShowTaskModal={setShowTaskModal}
           />
           <Ellipsis onClick={() => openDropdown()} />
           <div className={showDropdown ? 'dropdown show-dropdown' : 'dropdown'}>
@@ -62,6 +75,7 @@ const Navbar = () => {
               Delete Board
             </span>
           </div>
+
           <EditModalComponent
             showEditBoard={showEditBoard}
             setShowEditBoard={setShowEditBoard}
