@@ -3,7 +3,6 @@ import { Key } from "react";
 export interface IBoardsData {
   _id: Key | null | undefined;
   name: string | undefined;
-  // _id: string | number;
   columns?:IColumnsData[];
   customClass?: string;
  
@@ -12,7 +11,6 @@ export interface IBoardsData {
 export interface IColumnsData {
   _id: Key | null | undefined;
   name?: string | undefined;
-  // _id: string | number;
   tasks?: ITasksData[];
   quantity? : number | string;
   customClass?: string;
@@ -20,19 +18,20 @@ export interface IColumnsData {
 }
 
 export interface ITasksData {
-  title: string;
-  description?: string;
-  status?: string;
-  customClass?: string;
+  _id: Key | null | undefined;
+  title?: string | undefined;
+  description?: string | undefined;
+  status?: string | undefined;
+  customClass?: string | undefined;
   subtasks?: ISubtasksData[];
-  completedSubtasks? : number;
-  totalSubtasks?:number;
+  completedSubtasks? : number | string;
+  totalSubtasks?:number | string;
 
 }
 
 export interface ISubtasksData {
-  subtaskTitle: string;
+  subtaskTitle?: string | undefined;
   isCompleted?: number | string;
   totalSubtasks: number | string;
-  customClass?: string;
+  customClass?: string | undefined;
 }
