@@ -3,6 +3,7 @@ interface Props {
   onClick?: () => void;
   customClass?: string;
   // type?: <HTMLButtonElement>
+  disabled?: boolean;
 }
 
 const Button = ({ children, onClick, customClass }: Props) => {

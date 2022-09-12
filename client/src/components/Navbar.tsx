@@ -47,6 +47,7 @@ const Navbar = () => {
             customClass={
               col?.length == 0 || !selectedBoard ? 'btn btn-disabled' : 'btn'
             }
+            disabled={col?.length == 0 || !selectedBoard ? true : false}
           />
           <TaskModalComponent
             showTaskModal={showTaskModal}

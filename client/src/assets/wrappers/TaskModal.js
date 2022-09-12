@@ -11,16 +11,17 @@ const Wrapper = styled.div`
     background-color: rgb(0, 0, 0, 0.5);
   }
   .expanded {
-    /* margin-left: 645px; */
+    /* margin-left: -265px; */
   }
   .form {
     position: absolute;
-    top: 50%;
+    /* top: 0; */
     left: 50%;
-    /* min-height: 429px; */
+    /* min-height: 675px; */
+    height: auto;
     width: 480px;
     margin-left: -265px;
-    margin-top: -265px;
+    margin-top: 50px;
     padding: 32px;
     background-color: var(--white);
     border-radius: 6px;
@@ -59,9 +60,11 @@ const Wrapper = styled.div`
     padding-left: 16px;
     border-radius: 4px;
     margin-top: 9px;
-
     width: 100%;
     border: 1px solid var(--grey-200);
+    font-family: var(--bodyFont);
+    font-size: 13px;
+    line-height: 23px;
   }
   .form-icon {
     padding-top: 9px;
