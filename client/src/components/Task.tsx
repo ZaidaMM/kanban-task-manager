@@ -21,12 +21,13 @@ const Task = ({
           {title}
         </p>
         <span>
-          {completedSubtasks} of {totalSubtasks} subtasks
+          {/* {completedSubtasks} */}0 of
+          {/* {totalSubtasks}  */} 3 subtasks
         </span>
 
-        <p className={customClass}>
+        {/* <p className={customClass}>
           Research competitor pricing and business models
-        </p>
+        </p> */}
 
         {/* <p>
           {subtask?.isCompleted} of {subtask?.totalSubtasks}{' '}

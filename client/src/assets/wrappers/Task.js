@@ -6,9 +6,11 @@ const Wrapper = styled.section`
     border-radius: 8px;
     padding: 23px 16px;
     margin-bottom: 20px;
-    /* margin-right: 24px; */
-
     width: 280px;
+    cursor: pointer;
+  }
+  .task-container > p:hover {
+    color: var(--primary-200);
   }
   p {
     font-weight: 700;
