@@ -30,7 +30,8 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [selectedBoard, setSelectedBoard] = useState<IBoardsData | undefined>();
   const [columns, setColumns] = useState<IColumnsData[]>([]);
   const [column, setColumn] = useState<IColumnsData>();
-  // const [tasks, setTasks] = useState<ITasksData[]>([]);
+  const [tasks, setTasks] = useState<ITasksData[]>([]);
+  const [task, setTask] = useState<ITasksData>();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showSidebar, setShowSidebar] = useState(true);
@@ -39,8 +40,11 @@ const AppProvider = (props: { children: ReactNode }) => {
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [showDeleteBoard, setShowDeleteBoard] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
+  const [showEditTask, setShowEditTask] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [isTaskEditing, setIsTaskEditing] = useState(false);
+  const [selectedTask, setSelectedTask] = useState<ITasksData | undefined>();
 
   const params = useParams();
   const boardId = useParams();
@@ -218,6 +222,11 @@ const AppProvider = (props: { children: ReactNode }) => {
     });
   });
 
+  ////// OPEN EDIT TASK MODAL //////
+  const openEditTaskModal = () => {
+    setIsTaskEditing((prevIsTaskEditing) => !prevIsTaskEditing);
+  };
+
   ////// TOGGLE SIDEBAR//////
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -283,9 +292,18 @@ const AppProvider = (props: { children: ReactNode }) => {
         showDeleteBoard,
         setShowDeleteBoard,
         openShowEditBoard,
+        task,
+        tasks,
+        selectedTask,
+        setSelectedTask,
+        setShowEditTask,
+        showEditTask,
         setShowTaskModal,
         showTaskModal,
         openTaskModal,
+        openEditTaskModal,
+        isTaskEditing,
+        setIsTaskEditing,
         openDropdown,
         showDropdown,
         setShowDropdown,

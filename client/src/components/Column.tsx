@@ -21,6 +21,7 @@ const Column = ({ customClass, name, quantity, _id }: IColumnsData) => {
             title={'Build UI for onboarding flow'}
             description={''}
             status={'Todo'}
+            _id={undefined}
           />
         </div>
       </div>

@@ -17,8 +17,10 @@ export interface IAppContext {
   showSidebarToggler: boolean;
   columns: IColumnsData[] | undefined;
   column: IColumnsData | undefined;
-  // selectedColumn: IColumnsData | undefined;
-  // setSelectedColumn: (column: IColumnsData | undefined) => void;
+  tasks: ITasksData[] | undefined;
+  task: ITasksData | undefined;
+  selectedTask: ITasksData | undefined;
+  setSelectedTask: (task: ITasksData | undefined) => void;
   setShowBoardModal: (value:boolean) => void;
   showBoardModal: boolean;
   openBoardModal: () => void;
@@ -34,12 +36,18 @@ export interface IAppContext {
   openShowEditBoard: () => void;
   setShowTaskModal: (value:boolean) => void;
   showTaskModal: boolean;
+  setShowEditTask: (value: boolean) => void;
+  showEditTask: boolean;
+  openEditTaskModal: () => void;
+  // openShowEditTask: () => void;
   openTaskModal: () => void;
   openDropdown: () => void;
   showDropdown:boolean;
   setShowDropdown:(value: boolean) => void;
   isEditing: boolean;
   setIsEditing:(value:boolean) => void;
+  isTaskEditing: boolean;
+  setIsTaskEditing:(value:boolean) => void;
   // handleInputChange: (event:ChangeEventHandler<HTMLElement>) => void;
   // clearBoardForm:(event:FormEvent<HTMLFormElement> | undefined) => void
 }
